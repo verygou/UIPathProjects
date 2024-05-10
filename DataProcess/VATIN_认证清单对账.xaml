@@ -1,0 +1,754 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="VATIN_CertificationList" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="argEntityCode" Type="InArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>2147,7388</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>VATIN_CertificationList_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="23">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="21">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="VATIN_CertificationList" sap:VirtualizedContainerService.HintSize="2127,7328" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="dicConfig" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtVATIN_BPM" />
+      <Variable x:TypeArguments="s:String[]" Name="str_RZQDFiles" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Sequence sap:VirtualizedContainerService.HintSize="2085,280" sap2010:WorkflowViewState.IdRef="Sequence_22">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Framework\InitAllSettings.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="x:String" x:Key="in_ConfigFile">Data\Config.xlsx</InArgument>
+          <InArgument x:TypeArguments="s:String[]" x:Key="in_ConfigSheets">[{"Settings","Constants"}]</InArgument>
+          <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_Config">[dicConfig]</OutArgument>
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+      <Assign sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="Assign_32">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[argEntityCode]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">CN019</InArgument>
+        </Assign.Value>
+      </Assign>
+    </Sequence>
+    <Sequence sap:VirtualizedContainerService.HintSize="2085,6916" sap2010:WorkflowViewState.IdRef="Sequence_2">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="sd:DataTable" Name="dtVATIN" />
+        <Variable x:TypeArguments="sd:DataTable" Name="VATINList" />
+        <Variable x:TypeArguments="sd:DataTable" Name="dtCertificationList" />
+        <Variable x:TypeArguments="sd:DataTable" Name="dtTempRZ" />
+        <Variable x:TypeArguments="sd:DataTable" Name="dtVATTemp" />
+        <Variable x:TypeArguments="sd:DataTable" Name="dtCertificationListTitle" />
+        <Variable x:TypeArguments="ui:GenericValue" Name="VATINReportFilePath" />
+        <Variable x:TypeArguments="ui:GenericValue" Name="RZQDFilePath" />
+      </Sequence.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Assign DisplayName="VATIN" sap:VirtualizedContainerService.HintSize="2043,61" sap2010:WorkflowViewState.IdRef="Assign_30">
+        <Assign.To>
+          <OutArgument x:TypeArguments="ui:GenericValue">[VATINReportFilePath]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="ui:GenericValue">[path.Combine(dicConfig("差异文件夹").ToString,"VATIN_BPM对账后差异清单"+Now.ToString("yyyyMMdd")+".xlsx")]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <ui:ReadRange AddHeaders="True" DataTable="[dtVATIN_BPM]" DisplayName="VATIN_BPM" sap:VirtualizedContainerService.HintSize="2043,87" sap2010:WorkflowViewState.IdRef="ReadRange_6" Range="A1" SheetName="Sheet1" WorkbookPath="[path.Combine(dicConfig(&quot;差异文件夹&quot;).ToString,&quot;VATIN_BPM对账后差异清单&quot;+Now.ToString(&quot;yyyyMMdd&quot;)+&quot;.xlsx&quot;)]" />
+      <ui:ReadRange AddHeaders="True" DataTable="[dtVATIN]" DisplayName="VATIN" sap:VirtualizedContainerService.HintSize="2043,87" sap2010:WorkflowViewState.IdRef="ReadRange_1" Range="A1" SheetName="Sheet1" WorkbookPath="[VATINReportFilePath]" />
+      <ui:ReadRange AddHeaders="True" DataTable="[dtVATTemp]" DisplayName="VATIN" sap:VirtualizedContainerService.HintSize="2043,87" sap2010:WorkflowViewState.IdRef="ReadRange_4" Range="A1" SheetName="Sheet1" WorkbookPath="[VATINReportFilePath]" />
+      <ui:ClearDataTable DataTable="[dtVATTemp]" DisplayName="Clear Data Table" sap:VirtualizedContainerService.HintSize="2043,22" sap2010:WorkflowViewState.IdRef="ClearDataTable_1" />
+      <Assign sap:VirtualizedContainerService.HintSize="2043,61" sap2010:WorkflowViewState.IdRef="Assign_35">
+        <Assign.To>
+          <OutArgument x:TypeArguments="ui:GenericValue">[RZQDFilePath]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="ui:GenericValue">[path.Combine(dicConfig("认证清单源文件").ToString, argEntityCode)]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign sap:VirtualizedContainerService.HintSize="2043,61" sap2010:WorkflowViewState.IdRef="Assign_34">
+        <Assign.To>
+          <OutArgument x:TypeArguments="s:String[]">[str_RZQDFiles]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="s:String[]">[Directory.GetFiles(RZQDFilePath)]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <ui:ReadRange AddHeaders="True" DataTable="[dtCertificationList]" DisplayName="认证清单" sap:VirtualizedContainerService.HintSize="2043,87" sap2010:WorkflowViewState.IdRef="ReadRange_2" Range="A3" SheetName="发票" WorkbookPath="[str_RZQDFiles(0).ToString]" />
+      <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="对账状态" DataTable="[dtCertificationList]" DisplayName="Add Data Column" sap:VirtualizedContainerService.HintSize="2043,22" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_1" />
+      <ui:ReadRange AddHeaders="True" DataTable="[dtCertificationListTitle]" DisplayName="认证清单" sap:VirtualizedContainerService.HintSize="2043,87" sap2010:WorkflowViewState.IdRef="ReadRange_5" Range="A3" SheetName="发票" WorkbookPath="[str_RZQDFiles(0).ToString]" />
+      <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="对账状态" DataTable="[dtCertificationListTitle]" DisplayName="Add Data Column" sap:VirtualizedContainerService.HintSize="2043,22" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_2" />
+      <ui:ClearDataTable DataTable="[dtCertificationListTitle]" DisplayName="Clear Data Table" sap:VirtualizedContainerService.HintSize="2043,22" sap2010:WorkflowViewState.IdRef="ClearDataTable_2" />
+      <ui:FilterDataTable DataTable="[dtVATIN]" DisplayName="筛选未匹配VATIN数据" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="2043,59" sap2010:WorkflowViewState.IdRef="FilterDataTable_2" OutputDataTable="[VATINList]" SelectColumnsMode="Keep">
+        <ui:FilterDataTable.Filters>
+          <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+            <ui:FilterOperationArgument BooleanOperator="And" Operator="EQ">
+              <ui:FilterOperationArgument.Column>
+                <InArgument x:TypeArguments="x:String">["对账状态"]</InArgument>
+              </ui:FilterOperationArgument.Column>
+              <ui:FilterOperationArgument.Operand>
+                <InArgument x:TypeArguments="x:String">[""]</InArgument>
+              </ui:FilterOperationArgument.Operand>
+            </ui:FilterOperationArgument>
+            <ui:FilterOperationArgument BooleanOperator="Or" Operator="NOTEQ">
+              <ui:FilterOperationArgument.Column>
+                <InArgument x:TypeArguments="x:String">["合计金额"]</InArgument>
+              </ui:FilterOperationArgument.Column>
+              <ui:FilterOperationArgument.Operand>
+                <InArgument x:TypeArguments="x:String">["0"]</InArgument>
+              </ui:FilterOperationArgument.Operand>
+            </ui:FilterOperationArgument>
+          </scg:List>
+        </ui:FilterDataTable.Filters>
+        <ui:FilterDataTable.SelectColumns>
+          <scg:List x:TypeArguments="InArgument" Capacity="4">
+            <x:Null />
+          </scg:List>
+        </ui:FilterDataTable.SelectColumns>
+      </ui:FilterDataTable>
+      <ui:ForEachRow CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="循环VATIN未匹配数据对账认证清单数据" DataTable="[VATINList]" DisplayName="循环VATIN未匹配数据对账认证清单数据" sap:VirtualizedContainerService.HintSize="2043,3935" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+        <ui:ForEachRow.Body>
+          <ActivityAction x:TypeArguments="sd:DataRow">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="sd:DataRow" Name="item" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1993,3755" sap2010:WorkflowViewState.IdRef="Sequence_13">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1951,3446" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                <Sequence.Variables>
+                  <Variable x:TypeArguments="x:String" Name="str_InvoiceNo" />
+                </Sequence.Variables>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Assign DisplayName="获取VATIN发票号" sap:VirtualizedContainerService.HintSize="1909,61" sap2010:WorkflowViewState.IdRef="Assign_2">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[str_InvoiceNo]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">[item("Reference").ToString.Trim]</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Sequence DisplayName="新认证清单格式" sap:VirtualizedContainerService.HintSize="1909,3160" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="sd:DataRow[]" Name="dtCertificationArray" />
+                  </Sequence.Variables>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Assign DisplayName="匹配认证清单发票号" sap:VirtualizedContainerService.HintSize="1867,61" sap2010:WorkflowViewState.IdRef="Assign_3">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="sd:DataRow[]">[dtCertificationArray]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="sd:DataRow[]">[dtCertificationList.AsEnumerable.Where(function(r) str_InvoiceNo.Contains(r("发票号码").ToString.Trim) Or str_InvoiceNo.Contains(r("数电票号码").ToString.Trim)).ToArray]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <If Condition="[dtCertificationArray.Count&gt;0]" DisplayName="对账发票是否有匹配项" sap:VirtualizedContainerService.HintSize="1867,2967" sap2010:WorkflowViewState.IdRef="If_2">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If.Then>
+                      <Sequence sap:VirtualizedContainerService.HintSize="1517,2814" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:ForEach x:TypeArguments="sd:DataRow" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="1475,2722" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[dtCertificationArray]">
+                          <ui:ForEach.Body>
+                            <ActivityAction x:TypeArguments="sd:DataRow">
+                              <ActivityAction.Argument>
+                                <DelegateInArgument x:TypeArguments="sd:DataRow" Name="itemRZ" />
+                              </ActivityAction.Argument>
+                              <Sequence sap:VirtualizedContainerService.HintSize="1439,2585" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <If Condition="[str_InvoiceNo.Contains(&quot;&amp;&quot;) Or str_InvoiceNo.Contains(&quot;~&quot;) Or str_InvoiceNo.Contains(&quot;,&quot;) Or str_InvoiceNo.Contains(&quot;;&quot;)]" DisplayName="判断发票号是否包含“&amp;”" sap:VirtualizedContainerService.HintSize="1397,2493" sap2010:WorkflowViewState.IdRef="If_4">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <If.Then>
+                                    <Sequence sap:VirtualizedContainerService.HintSize="697,2340" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <Sequence DisplayName="发票号带“&amp;”号的，汇总该发票代码下有所该销方名称相同的" sap:VirtualizedContainerService.HintSize="655,2248" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                                        <Sequence.Variables>
+                                          <Variable x:TypeArguments="x:Decimal" Name="Difference_tax" />
+                                          <Variable x:TypeArguments="sd:DataTable" Name="dtTaxlist" />
+                                          <Variable x:TypeArguments="sd:DataTable" Name="writeStatusList" />
+                                        </Sequence.Variables>
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <ui:FilterDataTable DataTable="[dtCertificationList]" DisplayName="筛选该发票号同供应商所有发票信息" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="613,59" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[dtTaxlist]" SelectColumnsMode="Keep">
+                                          <ui:FilterDataTable.Filters>
+                                            <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                                              <ui:FilterOperationArgument BooleanOperator="And" Operator="EQ">
+                                                <ui:FilterOperationArgument.Column>
+                                                  <InArgument x:TypeArguments="x:String">["发票代码"]</InArgument>
+                                                </ui:FilterOperationArgument.Column>
+                                                <ui:FilterOperationArgument.Operand>
+                                                  <InArgument x:TypeArguments="x:String">[itemRZ("发票代码").ToString]</InArgument>
+                                                </ui:FilterOperationArgument.Operand>
+                                              </ui:FilterOperationArgument>
+                                              <ui:FilterOperationArgument BooleanOperator="And" Operator="EQ">
+                                                <ui:FilterOperationArgument.Column>
+                                                  <InArgument x:TypeArguments="x:String">["销售方纳税人识别号"]</InArgument>
+                                                </ui:FilterOperationArgument.Column>
+                                                <ui:FilterOperationArgument.Operand>
+                                                  <InArgument x:TypeArguments="x:String">[itemRZ("销售方纳税人识别号").ToString]</InArgument>
+                                                </ui:FilterOperationArgument.Operand>
+                                              </ui:FilterOperationArgument>
+                                            </scg:List>
+                                          </ui:FilterDataTable.Filters>
+                                          <ui:FilterDataTable.SelectColumns>
+                                            <scg:List x:TypeArguments="InArgument" Capacity="4">
+                                              <x:Null />
+                                            </scg:List>
+                                          </ui:FilterDataTable.SelectColumns>
+                                        </ui:FilterDataTable>
+                                        <Assign DisplayName="汇总相同发票号税额" sap:VirtualizedContainerService.HintSize="613,61" sap2010:WorkflowViewState.IdRef="Assign_15">
+                                          <Assign.To>
+                                            <OutArgument x:TypeArguments="x:Decimal">[Difference_tax]</OutArgument>
+                                          </Assign.To>
+                                          <Assign.Value>
+                                            <InArgument x:TypeArguments="x:Decimal">[dtTaxlist.AsEnumerable.sum(function(c) convert.ToDecimal(c("税额").ToString.Trim))]</InArgument>
+                                          </Assign.Value>
+                                        </Assign>
+                                        <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[dtTaxlist]" DisplayName="设置认证清单匹配状态" sap:VirtualizedContainerService.HintSize="613,768" sap2010:WorkflowViewState.IdRef="ForEachRow_3">
+                                          <ui:ForEachRow.Body>
+                                            <ActivityAction x:TypeArguments="sd:DataRow">
+                                              <ActivityAction.Argument>
+                                                <DelegateInArgument x:TypeArguments="sd:DataRow" Name="RZListrow" />
+                                              </ActivityAction.Argument>
+                                              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="376,617" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                                                <Sequence.Variables>
+                                                  <Variable x:TypeArguments="sd:DataRow" Name="RZRow" />
+                                                </Sequence.Variables>
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                  </scg:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                                <Assign sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="Assign_26">
+                                                  <Assign.To>
+                                                    <OutArgument x:TypeArguments="sd:DataRow">[RZRow]</OutArgument>
+                                                  </Assign.To>
+                                                  <Assign.Value>
+                                                    <InArgument x:TypeArguments="sd:DataRow">[dtCertificationList.Rows.Cast(Of System.Data.DataRow).Where(function(r) r("发票号码").ToString.Trim.Equals(RZListrow("发票号码").ToString.Trim))(0)]</InArgument>
+                                                  </Assign.Value>
+                                                </Assign>
+                                                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,95" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[RZRow]" />
+                                                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,95" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[RZRow(&quot;对账状态&quot;)]" />
+                                                <Assign sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="Assign_27">
+                                                  <Assign.To>
+                                                    <OutArgument x:TypeArguments="x:Object">[RZRow("对账状态")]</OutArgument>
+                                                  </Assign.To>
+                                                  <Assign.Value>
+                                                    <InArgument x:TypeArguments="x:Object">["已匹配"]</InArgument>
+                                                  </Assign.Value>
+                                                </Assign>
+                                                <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="334,53" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+                                                  <ui:CommentOut.Body>
+                                                    <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="275,155" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                                                      <sap:WorkflowViewStateService.ViewState>
+                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                        </scg:Dictionary>
+                                                      </sap:WorkflowViewStateService.ViewState>
+                                                      <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="233,63" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[dtCertificationList.Rows.Cast(Of System.Data.DataRow).Where(function(r) r(&quot;发票号码&quot;).ToString.Trim.Equals(RZListrow(&quot;发票号码&quot;).ToString.Trim))(0)(&quot;对账状态&quot;)]" />
+                                                    </Sequence>
+                                                  </ui:CommentOut.Body>
+                                                  <sap:WorkflowViewStateService.ViewState>
+                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                    </scg:Dictionary>
+                                                  </sap:WorkflowViewStateService.ViewState>
+                                                </ui:CommentOut>
+                                              </Sequence>
+                                            </ActivityAction>
+                                          </ui:ForEachRow.Body>
+                                        </ui:ForEachRow>
+                                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="613,95" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Warn" Message="[Difference_tax]" />
+                                        <Sequence sap:VirtualizedContainerService.HintSize="613,1013" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <Assign sap:VirtualizedContainerService.HintSize="571,61" sap2010:WorkflowViewState.IdRef="Assign_5">
+                                            <Assign.To>
+                                              <OutArgument x:TypeArguments="x:Object">[item("对账税额")]</OutArgument>
+                                            </Assign.To>
+                                            <Assign.Value>
+                                              <InArgument x:TypeArguments="x:Object">[Difference_tax]</InArgument>
+                                            </Assign.Value>
+                                          </Assign>
+                                          <Assign sap:VirtualizedContainerService.HintSize="571,61" sap2010:WorkflowViewState.IdRef="Assign_6">
+                                            <Assign.To>
+                                              <OutArgument x:TypeArguments="x:Object">[item("差异金额")]</OutArgument>
+                                            </Assign.To>
+                                            <Assign.Value>
+                                              <InArgument x:TypeArguments="x:Decimal">[convert.ToDecimal(item("合计金额").ToString)-Difference_tax]</InArgument>
+                                            </Assign.Value>
+                                          </Assign>
+                                          <If Condition="[convert.ToDecimal(item(&quot;合计金额&quot;).ToString)-Difference_tax&lt;&gt;0]" DisplayName="判断是否有税额差异" sap:VirtualizedContainerService.HintSize="571,214" sap2010:WorkflowViewState.IdRef="If_3">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                            <If.Then>
+                                              <Assign sap:VirtualizedContainerService.HintSize="263,61" sap2010:WorkflowViewState.IdRef="Assign_13">
+                                                <Assign.To>
+                                                  <OutArgument x:TypeArguments="x:Object">[item("对账状态")]</OutArgument>
+                                                </Assign.To>
+                                                <Assign.Value>
+                                                  <InArgument x:TypeArguments="x:Object">["差异"]</InArgument>
+                                                </Assign.Value>
+                                              </Assign>
+                                            </If.Then>
+                                            <If.Else>
+                                              <Assign sap:VirtualizedContainerService.HintSize="263,61" sap2010:WorkflowViewState.IdRef="Assign_4">
+                                                <Assign.To>
+                                                  <OutArgument x:TypeArguments="x:Object">[item("对账状态")]</OutArgument>
+                                                </Assign.To>
+                                                <Assign.Value>
+                                                  <InArgument x:TypeArguments="x:Object">["成功"]</InArgument>
+                                                </Assign.Value>
+                                              </Assign>
+                                            </If.Else>
+                                          </If>
+                                          <Assign sap:VirtualizedContainerService.HintSize="571,61" sap2010:WorkflowViewState.IdRef="Assign_7">
+                                            <Assign.To>
+                                              <OutArgument x:TypeArguments="x:Object">[item("发票类型")]</OutArgument>
+                                            </Assign.To>
+                                            <Assign.Value>
+                                              <InArgument x:TypeArguments="x:Object">[itemRZ("票种").ToString]</InArgument>
+                                            </Assign.Value>
+                                          </Assign>
+                                          <Assign sap:VirtualizedContainerService.HintSize="571,61" sap2010:WorkflowViewState.IdRef="Assign_8">
+                                            <Assign.To>
+                                              <OutArgument x:TypeArguments="x:Object">[item("发票代码")]</OutArgument>
+                                            </Assign.To>
+                                            <Assign.Value>
+                                              <InArgument x:TypeArguments="x:Object">[itemRZ("发票代码").ToString]</InArgument>
+                                            </Assign.Value>
+                                          </Assign>
+                                          <Assign sap:VirtualizedContainerService.HintSize="571,61" sap2010:WorkflowViewState.IdRef="Assign_9">
+                                            <Assign.To>
+                                              <OutArgument x:TypeArguments="x:Object">[item("发票号码")]</OutArgument>
+                                            </Assign.To>
+                                            <Assign.Value>
+                                              <InArgument x:TypeArguments="x:Object">[itemRZ("发票号码").ToString]</InArgument>
+                                            </Assign.Value>
+                                          </Assign>
+                                          <Assign sap:VirtualizedContainerService.HintSize="571,61" sap2010:WorkflowViewState.IdRef="Assign_10">
+                                            <Assign.To>
+                                              <OutArgument x:TypeArguments="x:Object">[item("标识")]</OutArgument>
+                                            </Assign.To>
+                                            <Assign.Value>
+                                              <InArgument x:TypeArguments="x:Object">[itemRZ("票种标签").ToString]</InArgument>
+                                            </Assign.Value>
+                                          </Assign>
+                                          <Assign sap:VirtualizedContainerService.HintSize="571,61" sap2010:WorkflowViewState.IdRef="Assign_12">
+                                            <Assign.To>
+                                              <OutArgument x:TypeArguments="x:Object">[item("来源")]</OutArgument>
+                                            </Assign.To>
+                                            <Assign.Value>
+                                              <InArgument x:TypeArguments="x:Object">["认证清单"]</InArgument>
+                                            </Assign.Value>
+                                          </Assign>
+                                        </Sequence>
+                                      </Sequence>
+                                    </Sequence>
+                                  </If.Then>
+                                  <If.Else>
+                                    <Sequence DisplayName="发票号不带“&amp;”，直接发票对比税额" sap:VirtualizedContainerService.HintSize="655,1762" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <Sequence sap:VirtualizedContainerService.HintSize="613,1670" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <Assign sap:VirtualizedContainerService.HintSize="571,61" sap2010:WorkflowViewState.IdRef="Assign_16">
+                                          <Assign.To>
+                                            <OutArgument x:TypeArguments="x:Object">[item("对账税额")]</OutArgument>
+                                          </Assign.To>
+                                          <Assign.Value>
+                                            <InArgument x:TypeArguments="x:Object">[itemRZ("税额").ToString.Trim]</InArgument>
+                                          </Assign.Value>
+                                        </Assign>
+                                        <Assign sap:VirtualizedContainerService.HintSize="571,61" sap2010:WorkflowViewState.IdRef="Assign_17">
+                                          <Assign.To>
+                                            <OutArgument x:TypeArguments="x:Object">[item("差异金额")]</OutArgument>
+                                          </Assign.To>
+                                          <Assign.Value>
+                                            <InArgument x:TypeArguments="x:Decimal">[convert.ToDecimal(item("合计金额").ToString)-Convert.ToDecimal(itemRZ("税额").ToString.Trim)]</InArgument>
+                                          </Assign.Value>
+                                        </Assign>
+                                        <If Condition="[convert.ToDecimal(item(&quot;合计金额&quot;).ToString)-Convert.ToDecimal(itemRZ(&quot;税额&quot;).ToString.Trim)&lt;&gt;0]" DisplayName="判断是否有税额差异" sap:VirtualizedContainerService.HintSize="571,214" sap2010:WorkflowViewState.IdRef="If_5">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <If.Then>
+                                            <Assign sap:VirtualizedContainerService.HintSize="263,61" sap2010:WorkflowViewState.IdRef="Assign_18">
+                                              <Assign.To>
+                                                <OutArgument x:TypeArguments="x:Object">[item("对账状态")]</OutArgument>
+                                              </Assign.To>
+                                              <Assign.Value>
+                                                <InArgument x:TypeArguments="x:Object">["差异"]</InArgument>
+                                              </Assign.Value>
+                                            </Assign>
+                                          </If.Then>
+                                          <If.Else>
+                                            <Assign sap:VirtualizedContainerService.HintSize="263,61" sap2010:WorkflowViewState.IdRef="Assign_19">
+                                              <Assign.To>
+                                                <OutArgument x:TypeArguments="x:Object">[item("对账状态")]</OutArgument>
+                                              </Assign.To>
+                                              <Assign.Value>
+                                                <InArgument x:TypeArguments="x:Object">["成功"]</InArgument>
+                                              </Assign.Value>
+                                            </Assign>
+                                          </If.Else>
+                                        </If>
+                                        <Assign sap:VirtualizedContainerService.HintSize="571,61" sap2010:WorkflowViewState.IdRef="Assign_20">
+                                          <Assign.To>
+                                            <OutArgument x:TypeArguments="x:Object">[item("发票类型")]</OutArgument>
+                                          </Assign.To>
+                                          <Assign.Value>
+                                            <InArgument x:TypeArguments="x:Object">[itemRZ("票种").ToString]</InArgument>
+                                          </Assign.Value>
+                                        </Assign>
+                                        <Assign sap:VirtualizedContainerService.HintSize="571,61" sap2010:WorkflowViewState.IdRef="Assign_21">
+                                          <Assign.To>
+                                            <OutArgument x:TypeArguments="x:Object">[item("发票代码")]</OutArgument>
+                                          </Assign.To>
+                                          <Assign.Value>
+                                            <InArgument x:TypeArguments="x:Object">[itemRZ("发票代码").ToString]</InArgument>
+                                          </Assign.Value>
+                                        </Assign>
+                                        <Assign sap:VirtualizedContainerService.HintSize="571,61" sap2010:WorkflowViewState.IdRef="Assign_22">
+                                          <Assign.To>
+                                            <OutArgument x:TypeArguments="x:Object">[item("发票号码")]</OutArgument>
+                                          </Assign.To>
+                                          <Assign.Value>
+                                            <InArgument x:TypeArguments="x:Object">[itemRZ("发票号码").ToString]</InArgument>
+                                          </Assign.Value>
+                                        </Assign>
+                                        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="571,617" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                                          <Sequence.Variables>
+                                            <Variable x:TypeArguments="sd:DataRow" Name="RZRow" />
+                                          </Sequence.Variables>
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <Assign sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="Assign_28">
+                                            <Assign.To>
+                                              <OutArgument x:TypeArguments="sd:DataRow">[RZRow]</OutArgument>
+                                            </Assign.To>
+                                            <Assign.Value>
+                                              <InArgument x:TypeArguments="sd:DataRow">[dtCertificationList.Rows.Cast(Of System.Data.DataRow).Where(function(r) r("发票号码").ToString.Trim.Equals(itemRZ("发票号码").ToString.Trim))(0)]</InArgument>
+                                            </Assign.Value>
+                                          </Assign>
+                                          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,95" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[RZRow]" />
+                                          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,95" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[RZRow(&quot;对账状态&quot;)]" />
+                                          <Assign sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="Assign_29">
+                                            <Assign.To>
+                                              <OutArgument x:TypeArguments="x:Object">[RZRow("对账状态")]</OutArgument>
+                                            </Assign.To>
+                                            <Assign.Value>
+                                              <InArgument x:TypeArguments="x:Object">["已匹配"]</InArgument>
+                                            </Assign.Value>
+                                          </Assign>
+                                          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="334,53" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+                                            <ui:CommentOut.Body>
+                                              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="275,155" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                  </scg:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                                <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="233,63" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[dtCertificationList.Rows.Cast(Of System.Data.DataRow).Where(function(r) r(&quot;发票号码&quot;).ToString.Trim.Equals(RZListrow(&quot;发票号码&quot;).ToString.Trim))(0)(&quot;对账状态&quot;)]" />
+                                              </Sequence>
+                                            </ui:CommentOut.Body>
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                          </ui:CommentOut>
+                                        </Sequence>
+                                        <Assign sap:VirtualizedContainerService.HintSize="571,61" sap2010:WorkflowViewState.IdRef="Assign_23">
+                                          <Assign.To>
+                                            <OutArgument x:TypeArguments="x:Object">[item("标识")]</OutArgument>
+                                          </Assign.To>
+                                          <Assign.Value>
+                                            <InArgument x:TypeArguments="x:Object">[itemRZ("票种标签").ToString]</InArgument>
+                                          </Assign.Value>
+                                        </Assign>
+                                        <Assign sap:VirtualizedContainerService.HintSize="571,61" sap2010:WorkflowViewState.IdRef="Assign_24">
+                                          <Assign.To>
+                                            <OutArgument x:TypeArguments="x:Object">[item("来源")]</OutArgument>
+                                          </Assign.To>
+                                          <Assign.Value>
+                                            <InArgument x:TypeArguments="x:Object">["认证清单"]</InArgument>
+                                          </Assign.Value>
+                                        </Assign>
+                                      </Sequence>
+                                    </Sequence>
+                                  </If.Else>
+                                </If>
+                              </Sequence>
+                            </ActivityAction>
+                          </ui:ForEach.Body>
+                        </ui:ForEach>
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence sap:VirtualizedContainerService.HintSize="305,254" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign sap:VirtualizedContainerService.HintSize="263,61" sap2010:WorkflowViewState.IdRef="Assign_14">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Object">[item("对账状态")]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Object">["未匹配"]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <Assign sap:VirtualizedContainerService.HintSize="263,61" sap2010:WorkflowViewState.IdRef="Assign_31">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Object">[item("来源")]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Object">["认证清单"]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                      </Sequence>
+                    </If.Else>
+                  </If>
+                </Sequence>
+                <ui:CommentOut DisplayName="Old任务清单格式 Comment Out" sap:VirtualizedContainerService.HintSize="1909,53" sap2010:WorkflowViewState.IdRef="CommentOut_6">
+                  <ui:CommentOut.Body>
+                    <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="242,162" sap2010:WorkflowViewState.IdRef="Sequence_39">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Sequence DisplayName="" sap:VirtualizedContainerService.HintSize="200,70" sap2010:WorkflowViewState.IdRef="Sequence_38">
+                        <Sequence.Variables>
+                          <Variable x:TypeArguments="sd:DataRow[]" Name="dtCertificationArray" />
+                        </Sequence.Variables>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign DisplayName="匹配认证清单发票号" sap:VirtualizedContainerService.HintSize="1412,61" sap2010:WorkflowViewState.IdRef="Assign_36">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="sd:DataRow[]">[dtCertificationArray]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="sd:DataRow[]">[dtCertificationList.AsEnumerable.Where(function(r) str_InvoiceNo.Contains(r("发票号码").ToString.Trim)).ToArray]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <If Condition="[dtCertificationArray.Count&gt;0]" DisplayName="对账发票是否有匹配项" sap:VirtualizedContainerService.HintSize="1412,2388" sap2010:WorkflowViewState.IdRef="If_9">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <If.Then>
+                            <Sequence sap:VirtualizedContainerService.HintSize="1062,2235" sap2010:WorkflowViewState.IdRef="Sequence_36">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:ForEach x:TypeArguments="sd:DataRow" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="1020,2143" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[dtCertificationArray]">
+                                <ui:ForEach.Body>
+                                  <ActivityAction x:TypeArguments="sd:DataRow">
+                                    <ActivityAction.Argument>
+                                      <DelegateInArgument x:TypeArguments="sd:DataRow" Name="itemRZ" />
+                                    </ActivityAction.Argument>
+                                    <Sequence sap:VirtualizedContainerService.HintSize="984,2006" sap2010:WorkflowViewState.IdRef="Sequence_35">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <If Condition="[str_InvoiceNo.Contains(&quot;&amp;&quot;)]" DisplayName="判断发票号是否包含“&amp;”" sap:VirtualizedContainerService.HintSize="942,1914" sap2010:WorkflowViewState.IdRef="If_8">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <If.Then>
+                                          <Sequence sap:VirtualizedContainerService.HintSize="242,162" sap2010:WorkflowViewState.IdRef="Sequence_30">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                            <Sequence DisplayName="发票号带“&amp;”号的，汇总该发票代码下有所该销方名称相同的" sap:VirtualizedContainerService.HintSize="200,70" sap2010:WorkflowViewState.IdRef="Sequence_29">
+                                              <Sequence.Variables>
+                                                <Variable x:TypeArguments="x:Decimal" Name="Difference_tax" />
+                                                <Variable x:TypeArguments="sd:DataTable" Name="dtTaxlist" />
+                                                <Variable x:TypeArguments="sd:DataTable" Name="writeStatusList" />
+                                              </Sequence.Variables>
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                              <ui:FilterDataTable DataTable="[dtCertificationList]" DisplayName="筛选该发票号同供应商所有发票信息" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="612,59" sap2010:WorkflowViewState.IdRef="FilterDataTable_6" OutputDataTable="[dtTaxlist]" SelectColumnsMode="Keep">
+                                                <ui:FilterDataTable.Filters>
+                                                  <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                                                    <ui:FilterOperationArgument BooleanOperator="And" Operator="EQ">
+                                                      <ui:FilterOperationArgument.Column>
+                                                        <InArgument x:TypeArguments="x:String">["发票代码"]</InArgument>
+                                                      </ui:FilterOperationArgument.Column>
+                                                      <ui:FilterOperationArgument.Operand>
+                                                        <InArgument x:TypeArguments="x:String">[itemRZ("发票代码").ToString]</InArgument>
+                                                      </ui:FilterOperationArgument.Operand>
+                                                    </ui:FilterOperationArgument>
+                                                    <ui:FilterOperationArgument BooleanOperator="And" Operator="EQ">
+                                                      <ui:FilterOperationArgument.Column>
+                                                        <InArgument x:TypeArguments="x:String">["销方税号"]</InArgument>
+                                                      </ui:FilterOperationArgument.Column>
+                                                      <ui:FilterOperationArgument.Operand>
+                                                        <InArgument x:TypeArguments="x:String">[itemRZ("销方税号").ToString]</InArgument>
+                                                      </ui:FilterOperationArgument.Operand>
+                                                    </ui:FilterOperationArgument>
+                                                  </scg:List>
+                                                </ui:FilterDataTable.Filters>
+                                                <ui:FilterDataTable.SelectColumns>
+                                                  <scg:List x:TypeArguments="InArgument" Capacity="4">
+                                                    <x:Null />
+                                                  </scg:List>
+                                                </ui:FilterDataTable.SelectColumns>
+                                              </ui:FilterDataTable>
+                                              <Assign DisplayName="汇总相同发票号税额" sap:VirtualizedContainerService.HintSize="612,61" sap2010:WorkflowViewState.IdRef="Assign_37">
+                                                <Assign.To>
+                                                  <OutArgument x:TypeArguments="x:Decimal">[Difference_tax]</OutArgument>
+                                                </Assign.To>
+                                                <Assign.Value>
+                                                  <InArgument x:TypeArguments="x:Decimal">[dtTaxlist.AsEnumerable.sum(function(c) convert.ToDecimal(c("税额").ToString.Trim))]</InArgument>
+                                                </Assign.Value>
+                                              </Assign>
+                                              <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[dtTaxlist]" DisplayName="设置认证清�                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              

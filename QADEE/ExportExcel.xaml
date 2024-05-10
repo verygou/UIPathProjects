@@ -1,0 +1,622 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="ExportExcel" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="argdicConfig" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>558,5190</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ExportExcel_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="21">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="46">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap:VirtualizedContainerService.HintSize="538,5130" sap2010:WorkflowViewState.IdRef="Sequence_20">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Sequence DisplayName="ExportExcel" sap:VirtualizedContainerService.HintSize="496,5038" sap2010:WorkflowViewState.IdRef="Sequence_4">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="x:Boolean" Name="isSave" />
+      </Sequence.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Sequence sap:VirtualizedContainerService.HintSize="454,484" sap2010:WorkflowViewState.IdRef="Sequence_12">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <Delay Duration="00:00:03" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Delay_1" />
+        <ui:TypeInto ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" EmptyField="{x:Null}" SimulateType="{x:Null}" Activate="True" DelayMS="2000" DisplayName="Type Into 'WindowsForms10.Window.8...'" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="TypeInto_1" SendWindowMessages="True" Text="* VAT Input Report">
+          <ui:TypeInto.Target>
+            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="77a46a2c189351378f56e0f9f31ccfc4" Selector="&lt;wnd app='qad.client.exe' ctrlname='ShellForm' /&gt;&lt;wnd ctrlname='pnlSideBarMenu' /&gt;&lt;wnd ctrlname='pnlSideBar' /&gt;&lt;wnd ctrlname='_ctlWorkspaceSideBar' /&gt;&lt;wnd cls='WindowsForms10.Window.*' idx='1' /&gt;&lt;wnd cls='WindowsForms10.Window.*' idx='10' /&gt;&lt;wnd cls='WindowsForms10.Window.*' idx='1' /&gt;&lt;wnd ctrlname='pnlOutside' /&gt;&lt;wnd ctrlname='pnlWidget' /&gt;&lt;wnd cls='WindowsForms10.Window.*' idx='1' /&gt;&lt;wnd ctrlname='_ctlIncrementalFinder' /&gt;&lt;wnd ctrlname='_txtFind' /&gt;&lt;wnd cls='WindowsForms10.EDIT.*' /&gt;">
+              <ui:Target.TimeoutMS>
+                <InArgument x:TypeArguments="x:Int32" />
+              </ui:Target.TimeoutMS>
+              <ui:Target.WaitForReady>
+                <InArgument x:TypeArguments="ui:WaitForReady" />
+              </ui:Target.WaitForReady>
+            </ui:Target>
+          </ui:TypeInto.Target>
+        </ui:TypeInto>
+        <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayMS="5000" DisplayName="Send Hotkey 'WindowsForms10.Window.8...'" sap:VirtualizedContainerService.HintSize="334,156" sap2010:WorkflowViewState.IdRef="SendHotkey_7" Key="enter" KeyModifiers="None" SpecialKey="True">
+          <ui:SendHotkey.Target>
+            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="874d8deb1948fa485a77d4c686294eb9" Selector="&lt;wnd app='qad.client.exe' ctrlname='ShellForm' /&gt;&lt;wnd ctrlname='pnlSideBarMenu' /&gt;&lt;wnd ctrlname='pnlSideBar' /&gt;&lt;wnd ctrlname='_ctlWorkspaceSideBar' /&gt;&lt;wnd cls='WindowsForms10.Window.*' idx='1' /&gt;&lt;wnd cls='WindowsForms10.Window.*' idx='10' /&gt;&lt;wnd cls='WindowsForms10.Window.*' idx='1' /&gt;&lt;wnd ctrlname='pnlOutside' /&gt;&lt;wnd ctrlname='pnlWidget' /&gt;&lt;wnd cls='WindowsForms10.Window.*' idx='1' /&gt;&lt;wnd ctrlname='_ctlIncrementalFinder' /&gt;&lt;wnd ctrlname='_txtFind' /&gt;">
+              <ui:Target.TimeoutMS>
+                <InArgument x:TypeArguments="x:Int32" />
+              </ui:Target.TimeoutMS>
+              <ui:Target.WaitForReady>
+                <InArgument x:TypeArguments="ui:WaitForReady" />
+              </ui:Target.WaitForReady>
+            </ui:Target>
+          </ui:SendHotkey.Target>
+        </ui:SendHotkey>
+      </Sequence>
+      <Sequence DisplayName="GL Account" sap:VirtualizedContainerService.HintSize="454,979" sap2010:WorkflowViewState.IdRef="Sequence_1">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:SetToClipboard DisplayName="Set To Clipboard" sap:VirtualizedContainerService.HintSize="376,59" sap2010:WorkflowViewState.IdRef="SetToClipboard_1" Text="225221" />
+        <Delay Duration="00:00:02" sap:VirtualizedContainerService.HintSize="376,22" sap2010:WorkflowViewState.IdRef="Delay_4" />
+        <Sequence DisplayName="Basic" sap:VirtualizedContainerService.HintSize="376,530" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="334,53" sap2010:WorkflowViewState.IdRef="CommentOut_4">
+            <ui:CommentOut.Body>
+              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,226" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:SelectItem ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Select Item 'WindowsForms10.Window.8...'" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="SelectItem_1" Item="not equals">
+                  <ui:SelectItem.Items>
+                    <scg:List x:TypeArguments="x:String" Capacity="16">
+                      <x:String>range</x:String>
+                      <x:String>equals</x:String>
+                      <x:String>not equals</x:String>
+                      <x:String>contains</x:String>
+                      <x:String>range</x:String>
+                      <x:String>starts at</x:String>
+                      <x:String>greater than</x:String>
+                      <x:String>less than</x:String>
+                      <x:String>is null</x:String>
+                      <x:String>is not null</x:String>
+                    </scg:List>
+                  </ui:SelectItem.Items>
+                  <ui:SelectItem.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="3a94a41184a8081565d6c932439345bc" Selector="&lt;wnd app='qad.client.exe' ctrlname='ShellForm' /&gt;&#xA;&lt;wnd cls='WindowsForms10.Window.*' idx='1' title='* VAT Input Report - Viewer' /&gt;&#xA;&lt;wnd ctrlname='C1Viewer' /&gt;&#xA;&lt;wnd ctrlname='_viewerTabControl' /&gt;&#xA;&lt;wnd ctrlname='_promptPageTabPage' /&gt;&#xA;&lt;wnd ctrlname='_reportSearchControl' /&gt;&#xA;&lt;wnd ctrlname='_gbSearch' /&gt;&#xA;&lt;wnd ctrlname='_pnlSearch' /&gt;&#xA;&lt;wnd ctrlname='_pnlSearchConditions' /&gt;&#xA;&lt;wnd ctrlname='SearchConditionControl' idx='2' /&gt;&#xA;&lt;wnd ctrlname='_ceOperator' /&gt;&#xA;">
+                      <ui:Target.TimeoutMS>
+                        <InArgument x:TypeArguments="x:Int32" />
+                      </ui:Target.TimeoutMS>
+                      <ui:Target.WaitForReady>
+                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                      </ui:Target.WaitForReady>
+                    </ui:Target>
+                  </ui:SelectItem.Target>
+                </ui:SelectItem>
+              </Sequence>
+            </ui:CommentOut.Body>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:CommentOut>
+          <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'drop down button  Open'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT">
+            <ui:Click.CursorPosition>
+              <ui:CursorPosition Position="Center">
+                <ui:CursorPosition.OffsetX>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:CursorPosition.OffsetX>
+                <ui:CursorPosition.OffsetY>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:CursorPosition.OffsetY>
+              </ui:CursorPosition>
+            </ui:Click.CursorPosition>
+            <ui:Click.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="9b7c92fba53e9b7cac172839e4455396" Selector="&lt;wnd app='qad.client.exe' ctrlname='ShellForm' /&gt;&lt;wnd cls='WindowsForms10.Window.*' idx='1' title='* VAT Input Report - Viewer' /&gt;&lt;wnd ctrlname='C1Viewer' /&gt;&lt;wnd ctrlname='_viewerTabControl' /&gt;&lt;wnd ctrlname='_promptPageTabPage' /&gt;&lt;wnd ctrlname='_reportSearchControl' /&gt;&lt;wnd ctrlname='_gbSearch' /&gt;&lt;wnd ctrlname='_pnlSearch' /&gt;&lt;wnd ctrlname='_pnlSearchConditions' /&gt;&lt;wnd ctrlname='SearchConditionControl' idx='2' /&gt;&lt;wnd ctrlname='_ceOperator' /&gt;&lt;ctrl idx='2' name='Open' role='drop down button' /&gt;">
+                <ui:Target.TimeoutMS>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:Target.TimeoutMS>
+                <ui:Target.WaitForReady>
+                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                </ui:Target.WaitForReady>
+              </ui:Target>
+            </ui:Click.Target>
+          </ui:Click>
+          <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="334,53" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[{1,2,3}]">
+            <ui:ForEach.Body>
+              <ActivityAction x:TypeArguments="x:Object">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="x:Object" Name="item" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="376,210" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="334,118" sap2010:WorkflowViewState.IdRef="SendHotkey_2" Key="up" KeyModifiers="None" SpecialKey="True">
+                    <ui:SendHotkey.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                        <ui:Target.WaitForReady>
+                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                        </ui:Target.WaitForReady>
+                      </ui:Target>
+                    </ui:SendHotkey.Target>
+                  </ui:SendHotkey>
+                </Sequence>
+              </ActivityAction>
+            </ui:ForEach.Body>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:ForEach>
+          <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'drop down button  Open'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_6" KeyModifiers="None" MouseButton="BTN_LEFT">
+            <ui:Click.CursorPosition>
+              <ui:CursorPosition Position="Center">
+                <ui:CursorPosition.OffsetX>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:CursorPosition.OffsetX>
+                <ui:CursorPosition.OffsetY>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:CursorPosition.OffsetY>
+              </ui:CursorPosition>
+            </ui:Click.CursorPosition>
+            <ui:Click.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="68cd2b57fe557984b1c57248434d8384" Selector="&lt;wnd app='qad.client.exe' ctrlname='ShellForm' /&gt;&lt;wnd cls='WindowsForms10.Window.*' title='* VAT Input Report - Viewer' /&gt;&lt;wnd ctrlname='C1Viewer' /&gt;&lt;wnd ctrlname='_viewerTabControl' /&gt;&lt;wnd ctrlname='_promptPageTabPage' /&gt;&lt;wnd ctrlname='_reportSearchControl' /&gt;&lt;wnd ctrlname='_gbSearch' /&gt;&lt;wnd ctrlname='_pnlSearch' /&gt;&lt;wnd ctrlname='_pnlSearchConditions' /&gt;&lt;wnd ctrlname='SearchConditionControl' idx='2' /&gt;&lt;wnd ctrlname='_ceField' /&gt;&lt;ctrl idx='2' name='Open' role='drop down button' /&gt;">
+                <ui:Target.TimeoutMS>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:Target.TimeoutMS>
+                <ui:Target.WaitForReady>
+                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                </ui:Target.WaitForReady>
+              </ui:Target>
+            </ui:Click.Target>
+          </ui:Click>
+        </Sequence>
+        <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SpecialKey="{x:Null}" Activate="True" DisplayName="Send Hotkey 'WindowsForms10.EDIT.app...'" sap:VirtualizedContainerService.HintSize="376,156" sap2010:WorkflowViewState.IdRef="SendHotkey_4" Key="v" KeyModifiers="Ctrl">
+          <ui:SendHotkey.Target>
+            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="ba60f05ec76a636419158aef1c50e4f7" Selector="&lt;wnd app='qad.client.exe' ctrlname='ShellForm' /&gt;&lt;wnd cls='WindowsForms10.Window.*' title='* VAT Input Report - Viewer' /&gt;&lt;wnd ctrlname='C1Viewer' /&gt;&lt;wnd ctrlname='_viewerTabControl' /&gt;&lt;wnd ctrlname='_promptPageTabPage' /&gt;&lt;wnd ctrlname='_reportSearchControl' /&gt;&lt;wnd ctrlname='_gbSearch' /&gt;&lt;wnd ctrlname='_pnlSearch' /&gt;&lt;wnd ctrlname='_pnlSearchConditions' /&gt;&lt;wnd ctrlname='SearchConditionControl' idx='2' /&gt;&lt;wnd ctrlname='_teValue1' /&gt;">
+              <ui:Target.TimeoutMS>
+                <InArgument x:TypeArguments="x:Int32" />
+              </ui:Target.TimeoutMS>
+              <ui:Target.WaitForReady>
+                <InArgument x:TypeArguments="ui:WaitForReady" />
+              </ui:Target.WaitForReady>
+            </ui:Target>
+          </ui:SendHotkey.Target>
+        </ui:SendHotkey>
+      </Sequence>
+      <Sequence DisplayName="Posting Date" sap:VirtualizedContainerService.HintSize="454,1599" sap2010:WorkflowViewState.IdRef="Sequence_14">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'drop down button  Open'" sap:VirtualizedContainerService.HintSize="412,106" sap2010:WorkflowViewState.IdRef="Click_4" KeyModifiers="None" MouseButton="BTN_LEFT">
+          <ui:Click.CursorPosition>
+            <ui:CursorPosition Position="Center">
+              <ui:CursorPosition.OffsetX>
+                <InArgument x:TypeArguments="x:Int32" />
+              </ui:CursorPosition.OffsetX>
+              <ui:CursorPosition.OffsetY>
+                <InArgument x:TypeArguments="x:Int32" />
+              </ui:CursorPosition.OffsetY>
+            </ui:CursorPosition>
+          </ui:Click.CursorPosition>
+          <ui:Click.Target>
+            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="b9dac2f24136aa6d7e401af35a3dfd82" Selector="&lt;wnd app='qad.client.exe' ctrlname='ShellForm' /&gt;&lt;wnd cls='WindowsForms10.Window.*' idx='1' title='* VAT Input Report - Viewer' /&gt;&lt;wnd ctrlname='C1Viewer' /&gt;&lt;wnd ctrlname='_viewerTabControl' /&gt;&lt;wnd ctrlname='_promptPageTabPage' /&gt;&lt;wnd ctrlname='_reportSearchControl' /&gt;&lt;wnd ctrlname='_gbSearch' /&gt;&lt;wnd ctrlname='_pnlSearch' /&gt;&lt;wnd ctrlname='_pnlSearchConditions' /&gt;&lt;wnd ctrlname='SearchConditionControl' idx='4' /&gt;&lt;wnd ctrlname='_ceOperator' /&gt;&lt;ctrl idx='2' name='Open' role='drop down button' /&gt;">
+              <ui:Target.TimeoutMS>
+                <InArgument x:TypeArguments="x:Int32" />
+              </ui:Target.TimeoutMS>
+              <ui:Target.WaitForReady>
+                <InArgument x:TypeArguments="ui:WaitForReady" />
+              </ui:Target.WaitForReady>
+            </ui:Target>
+          </ui:Click.Target>
+        </ui:Click>
+        <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="412,347" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[{1,2}]">
+          <ui:ForEach.Body>
+            <ActivityAction x:TypeArguments="x:Object">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="x:Object" Name="item" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="376,210" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="334,118" sap2010:WorkflowViewState.IdRef="SendHotkey_5" Key="down" KeyModifiers="None" SpecialKey="True">
+                  <ui:SendHotkey.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}">
+                      <ui:Target.TimeoutMS>
+                        <InArgument x:TypeArguments="x:Int32" />
+                      </ui:Target.TimeoutMS>
+                      <ui:Target.WaitForReady>
+                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                      </ui:Target.WaitForReady>
+                    </ui:Target>
+                  </ui:SendHotkey.Target>
+                </ui:SendHotkey>
+              </Sequence>
+            </ActivityAction>
+          </ui:ForEach.Body>
+        </ui:ForEach>
+        <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'drop down button  Open'" sap:VirtualizedContainerService.HintSize="412,106" sap2010:WorkflowViewState.IdRef="Click_7" KeyModifiers="None" MouseButton="BTN_LEFT">
+          <ui:Click.CursorPosition>
+            <ui:CursorPosition Position="Center">
+              <ui:CursorPosition.OffsetX>
+                <InArgument x:TypeArguments="x:Int32" />
+              </ui:CursorPosition.OffsetX>
+              <ui:CursorPosition.OffsetY>
+                <InArgument x:TypeArguments="x:Int32" />
+              </ui:CursorPosition.OffsetY>
+            </ui:CursorPosition>
+          </ui:Click.CursorPosition>
+          <ui:Click.Target>
+            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="6ea58bc5ba912d13a8e5651b7a8a7d30" Selector="&lt;wnd app='qad.client.exe' ctrlname='ShellForm' /&gt;&lt;wnd cls='WindowsForms10.Window.*' title='* VAT Input Report - Viewer' /&gt;&lt;wnd ctrlname='C1Viewer' /&gt;&lt;wnd ctrlname='_viewerTabControl' /&gt;&lt;wnd ctrlname='_promptPageTabPage' /&gt;&lt;wnd ctrlname='_reportSearchControl' /&gt;&lt;wnd ctrlname='_gbSearch' /&gt;&lt;wnd ctrlname='_pnlSearch' /&gt;&lt;wnd ctrlname='_pnlSearchConditions' /&gt;&lt;wnd ctrlname='SearchConditionControl' idx='4' /&gt;&lt;wnd ctrlname='_ceField' /&gt;&lt;ctrl idx='2' name='Open' role='drop down button' /&gt;">
+              <ui:Target.TimeoutMS>
+                <InArgument x:TypeArguments="x:Int32" />
+              </ui:Target.TimeoutMS>
+              <ui:Target.WaitForReady>
+                <InArgument x:TypeArguments="ui:WaitForReady" />
+              </ui:Target.WaitForReady>
+            </ui:Target>
+          </ui:Click.Target>
+        </ui:Click>
+        <Sequence sap:VirtualizedContainerService.HintSize="412,828" sap2010:WorkflowViewState.IdRef="Sequence_15">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:SetToClipboard DisplayName="Set To Clipboard" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="SetToClipboard_2" Text="[Now.AddMonths(-1).ToString(&quot;yyyy/MM/01&quot;)]" />
+          <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SpecialKey="{x:Null}" Activate="True" DisplayName="Send Hotkey 'WindowsForms10.EDIT.app...'" sap:VirtualizedContainerService.HintSize="334,156" sap2010:WorkflowViewState.IdRef="SendHotkey_8" Key="v" KeyModifiers="Ctrl">
+            <ui:SendHotkey.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="8362166325ae07777dd6e930bea139dd" Selector="&lt;wnd app='qad.client.exe' ctrlname='ShellForm' /&gt;&lt;wnd cls='WindowsForms10.Window.*' title='* VAT Input Report - Viewer' /&gt;&lt;wnd ctrlname='C1Viewer' /&gt;&lt;wnd ctrlname='_viewerTabControl' /&gt;&lt;wnd ctrlname='_promptPageTabPage' /&gt;&lt;wnd ctrlname='_reportSearchControl' /&gt;&lt;wnd ctrlname='_gbSearch' /&gt;&lt;wnd ctrlname='_pnlSearch' /&gt;&lt;wnd ctrlname='_pnlSearchConditions' /&gt;&lt;wnd ctrlname='SearchConditionControl' idx='4' /&gt;&lt;wnd ctrlname='_dtValue1' /&gt;">
+                <ui:Target.TimeoutMS>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:Target.TimeoutMS>
+                <ui:Target.WaitForReady>
+                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                </ui:Target.WaitForReady>
+              </ui:Target>
+            </ui:SendHotkey.Target>
+          </ui:SendHotkey>
+          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="334,53" sap2010:WorkflowViewState.IdRef="CommentOut_5">
+            <ui:CommentOut.Body>
+              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,226" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:TypeInto ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" Activate="True" DisplayName="Type Into 'From date'" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="TypeInto_2" SendWindowMessages="False" SimulateType="False" Text="[Now.AddMonths(-1).ToString(&quot;yyyy/MM/01&quot;)]">
+                  <ui:TypeInto.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="6117600c25bb8b8c97ece27f14a9bf53" Selector="&lt;wnd app='qad.client.exe' ctrlname='ShellForm' /&gt;&lt;wnd cls='WindowsForms10.Window.*' idx='1' title='* VAT Input Report - Viewer' /&gt;&lt;wnd ctrlname='C1Viewer' /&gt;&lt;wnd ctrlname='_viewerTabControl' /&gt;&lt;wnd ctrlname='_promptPageTabPage' /&gt;&lt;wnd ctrlname='_reportSearchControl' /&gt;&lt;wnd ctrlname='_gbSearch' /&gt;&lt;wnd ctrlname='_pnlSearch' /&gt;&lt;wnd ctrlname='_pnlSearchConditions' /&gt;&lt;wnd ctrlname='SearchConditionControl' idx='4' /&gt;&lt;wnd ctrlname='_dtValue1' /&gt;">
+                      <ui:Target.TimeoutMS>
+                        <InArgument x:TypeArguments="x:Int32" />
+                      </ui:Target.TimeoutMS>
+                      <ui:Target.WaitForReady>
+                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                      </ui:Target.WaitForReady>
+                    </ui:Target>
+                  </ui:TypeInto.Target>
+                </ui:TypeInto>
+              </Sequence>
+            </ui:CommentOut.Body>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:CommentOut>
+          <ui:SetToClipboard DisplayName="Set To Clipboard" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="SetToClipboard_3" Text="[DateTime.Parse(Now.Year.ToString+&quot;/&quot;+Now.AddMonths(0).ToString(&quot;MM&quot;)+&quot;/01&quot;).AddDays(-1).ToString(&quot;yyyy/MM/dd&quot;)]" />
+          <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SpecialKey="{x:Null}" Activate="True" DisplayName="Send Hotkey 'WindowsForms10.Window.8...'" sap:VirtualizedContainerService.HintSize="334,156" sap2010:WorkflowViewState.IdRef="SendHotkey_9" Key="v" KeyModifiers="Ctrl">
+            <ui:SendHotkey.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="290604cef33f9179f1bd1af4fe3600b3" Selector="&lt;wnd app='qad.client.exe' ctrlname='ShellForm' /&gt;&lt;wnd cls='WindowsForms10.Window.*' title='* VAT Input Report - Viewer' /&gt;&lt;wnd ctrlname='C1Viewer' /&gt;&lt;wnd ctrlname='_viewerTabControl' /&gt;&lt;wnd ctrlname='_promptPageTabPage' /&gt;&lt;wnd ctrlname='_reportSearchControl' /&gt;&lt;wnd ctrlname='_gbSearch' /&gt;&lt;wnd ctrlname='_pnlSearch' /&gt;&lt;wnd ctrlname='_pnlSearchConditions' /&gt;&lt;wnd ctrlname='SearchConditionControl' idx='4' /&gt;&lt;wnd ctrlname='_dtValue2' /&gt;">
+                <ui:Target.TimeoutMS>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:Target.TimeoutMS>
+                <ui:Target.WaitForReady>
+                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                </ui:Target.WaitForReady>
+              </ui:Target>
+            </ui:SendHotkey.Target>
+          </ui:SendHotkey>
+          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="334,53" sap2010:WorkflowViewState.IdRef="CommentOut_6">
+            <ui:CommentOut.Body>
+              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,226" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:TypeInto ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="to date" EmptyField="True" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="TypeInto_3" SimulateType="True" Text="[DateTime.Parse(Now.Year.ToString+&quot;/&quot;+Now.AddMonths(0).ToString(&quot;MM&quot;)+&quot;/01&quot;).AddDays(-1).ToString(&quot;yyyy/MM/dd&quot;)]">
+                  <ui:TypeInto.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="dc8689a5b2f8061754ce9604fa6d233d" Selector="&lt;wnd app='qad.client.exe' ctrlname='ShellForm' /&gt;&lt;wnd cls='WindowsForms10.Window.*' idx='1' title='* VAT Input Report - Viewer' /&gt;&lt;wnd ctrlname='C1Viewer' /&gt;&lt;wnd ctrlname='_viewerTabControl' /&gt;&lt;wnd ctrlname='_promptPageTabPage' /&gt;&lt;wnd ctrlname='_reportSearchControl' /&gt;&lt;wnd ctrlname='_gbSearch' /&gt;&lt;wnd ctrlname='_pnlSearch' /&gt;&lt;wnd ctrlname='_pnlSearchConditions' /&gt;&lt;wnd ctrlname='SearchConditionControl' idx='4' /&gt;&lt;wnd ctrlname='_dtValue2' /&gt;">
+                      <ui:Target.TimeoutMS>
+                        <InArgument x:TypeArguments="x:Int32" />
+                      </ui:Target.TimeoutMS>
+                      <ui:Target.WaitForReady>
+                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                      </ui:Target.WaitForReady>
+                    </ui:Target>
+                  </ui:TypeInto.Target>
+                </ui:TypeInto>
+              </Sequence>
+            </ui:CommentOut.Body>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:CommentOut>
+        </Sequence>
+      </Sequence>
+      <Sequence sap:VirtualizedContainerService.HintSize="454,731" sap2010:WorkflowViewState.IdRef="Sequence_17">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_DOUBLE" DisplayName="Click 'drop down button  Open'" sap:VirtualizedContainerService.HintSize="412,106" sap2010:WorkflowViewState.IdRef="Click_8" KeyModifiers="None" MouseButton="BTN_LEFT">
+          <ui:Click.CursorPosition>
+            <ui:CursorPosition Position="Center">
+              <ui:CursorPosition.OffsetX>
+                <InArgument x:TypeArguments="x:Int32" />
+              </ui:CursorPosition.OffsetX>
+              <ui:CursorPosition.OffsetY>
+                <InArgument x:TypeArguments="x:Int32" />
+              </ui:CursorPosition.OffsetY>
+            </ui:CursorPosition>
+          </ui:Click.CursorPosition>
+          <ui:Click.Target>
+            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="d78847624abfe9808a70ef978ec6bd57" Selector="&lt;wnd app='qad.client.exe' ctrlname='ShellForm' /&gt;&lt;wnd cls='WindowsForms10.Window.*' idx='1' title='* VAT Input Report - Viewer' /&gt;&lt;wnd ctrlname='C1Viewer' /&gt;&lt;wnd ctrlname='_viewerTabControl' /&gt;&lt;wnd ctrlname='_promptPageTabPage' /&gt;&lt;wnd ctrlname='_tbC1Viewer' /&gt;&lt;wnd ctrlname='_BrowseToolbar_Toolbars_Dock_Area_Top' /&gt;&lt;ctrl name='DockTop' role='grouping' /&gt;&lt;ctrl name='Toolbar' role='tool bar' /&gt;&lt;ctrl name='Output Type' role='drop down' /&gt;&lt;ctrl idx='2' name='Open' role='drop down button' /&gt;">
+              <ui:Target.TimeoutMS>
+                <InArgument x:TypeArguments="x:Int32" />
+              </ui:Target.TimeoutMS>
+              <ui:Target.WaitForReady>
+                <InArgument x:TypeArguments="ui:WaitForReady" />
+              </ui:Target.WaitForReady>
+            </ui:Target>
+          </ui:Click.Target>
+        </ui:Click>
+        <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="412,347" sap2010:WorkflowViewState.IdRef="ForEach`1_5" Values="[{1,2,3,4,5}]">
+          <ui:ForEach.Body>
+            <ActivityAction x:TypeArguments="x:Object">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="x:Object" Name="item" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="376,210" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="334,118" sap2010:WorkflowViewState.IdRef="SendHotkey_6" Key="down" KeyModifiers="None" SpecialKey="True">
+                  <ui:SendHotkey.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}">
+                      <ui:Target.TimeoutMS>
+                        <InArgument x:TypeArguments="x:Int32" />
+                      </ui:Target.TimeoutMS>
+                      <ui:Target.WaitForReady>
+                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                      </ui:Target.WaitForReady>
+                    </ui:Target>
+                  </ui:SendHotkey.Target>
+                </ui:SendHotkey>
+              </Sequence>
+            </ActivityAction>
+          </ui:ForEach.Body>
+        </ui:ForEach>
+        <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'push button  Run'" sap:VirtualizedContainerService.HintSize="412,106" sap2010:WorkflowViewState.IdRef="Click_9" KeyModifiers="None" MouseButton="BTN_LEFT">
+          <ui:Click.CursorPosition>
+            <ui:CursorPosition Position="Center">
+              <ui:CursorPosition.OffsetX>
+                <InArgument x:TypeArguments="x:Int32" />
+              </ui:CursorPosition.OffsetX>
+              <ui:CursorPosition.OffsetY>
+                <InArgument x:TypeArguments="x:Int32" />
+              </ui:CursorPosition.OffsetY>
+            </ui:CursorPosition>
+          </ui:Click.CursorPosition>
+          <ui:Click.Target>
+            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="d9dfff719f87dd8bed00e3d8c550cb67" Selector="&lt;wnd app='qad.client.exe' ctrlname='ShellForm' /&gt;&lt;wnd cls='WindowsForms10.Window.*' idx='1' title='* VAT Input Report - Viewer' /&gt;&lt;wnd ctrlname='C1Viewer' /&gt;&lt;wnd ctrlname='_viewerTabControl' /&gt;&lt;wnd ctrlname='_promptPageTabPage' /&gt;&lt;wnd ctrlname='_tbC1Viewer' /&gt;&lt;wnd ctrlname='_BrowseToolbar_Toolbars_Dock_Area_Top' /&gt;&lt;ctrl name='DockTop' role='grouping' /&gt;&lt;ctrl name='Toolbar' role='tool bar' /&gt;&lt;ctrl name='Run' role='push button' /&gt;">
+              <ui:Target.TimeoutMS>
+                <InArgument x:TypeArguments="x:Int32" />
+              </ui:Target.TimeoutMS>
+              <ui:Target.WaitForReady>
+                <InArgument x:TypeArguments="ui:WaitForReady" />
+              </ui:Target.WaitForReady>
+            </ui:Target>
+          </ui:Click.Target>
+        </ui:Click>
+      </Sequence>
+      <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="454,381" sap2010:WorkflowViewState.IdRef="RetryScope_1">
+        <ui:RetryScope.ActivityBody>
+          <ActivityAction>
+            <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_18">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <Delay Duration="00:00:10" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Delay_5" />
+            </Sequence>
+          </ActivityAction>
+        </ui:RetryScope.ActivityBody>
+        <ui:RetryScope.Condition>
+          <ActivityFunc x:TypeArguments="x:Boolean">
+            <ui:UiElementExists DisplayName="Element Exists 'WindowsForms10.STATIC.a...'" Exists="[isSave]" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+              <ui:UiElementExists.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="39df5340e27777d41958c91bf0966c8d" Selector="&lt;wnd app='qad.client.exe' cls='#32770' title='文件下载' /&gt;&lt;wnd ctrlid='4417' title='你要打开还是保存此文件?' /&gt;">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:UiElementExists.Target>
+            </ui:UiElementExists>
+          </ActivityFunc>
+        </ui:RetryScope.Condition>
+      </ui:RetryScope>
+      <ui:Click DelayBefore="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DelayMS="2000" DisplayName="Click 'Button'" sap:VirtualizedContainerService.HintSize="454,106" sap2010:WorkflowViewState.IdRef="Click_10" KeyModifiers="None" MouseButton="BTN_LEFT">
+        <ui:Click.CursorPosition>
+          <ui:CursorPosition Position="Center">
+            <ui:CursorPosition.OffsetX>
+              <InArgument x:TypeArguments="x:Int32" />
+            </ui:CursorPosition.OffsetX>
+            <ui:CursorPosition.OffsetY>
+              <InArgument x:TypeArguments="x:Int32" />
+            </ui:CursorPosition.OffsetY>
+          </ui:CursorPosition>
+        </ui:Click.CursorPosition>
+        <ui:Click.Target>
+          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="b6061d0e971f83d7b7a52300459160f0" Selector="&lt;wnd app='qad.client.exe' cls='#32770' title='文件下载' /&gt;&lt;wnd ctrlid='4427' title='保存(&amp;amp;S)' /&gt;">
+            <ui:Target.TimeoutMS>
+              <InArgument x:TypeArguments="x:Int32" />
+            </ui:Target.TimeoutMS>
+            <ui:Target.WaitForReady>
+              <InArgument x:TypeArguments="ui:WaitForReady" />
+            </ui:Target.WaitForReady>
+          </ui:Target>
+        </ui:Click.Target>
+      </ui:Click>
+      <ui:TypeInto ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayMS="2000" DisplayName="Type Into 'Edit'" EmptyField="True" sap:VirtualizedContainerService.HintSize="454,134" sap2010:WorkflowViewState.IdRef="TypeInto_4" SimulateType="True" Text="[Path.Combine( argdicConfig(&quot;QADEE源文件&quot;).ToString,&quot;VATINPUT REPORT-EE.xls&quot;)]">
+        <ui:TypeInto.Target>
+          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="86827e59324a007154bb7aeebd8a9882" Selector="&lt;wnd app='qad.client.exe' cls='#32770' title='另存为' /&gt;&lt;wnd aaname='浏览器窗格' cls='DirectUIHWND' /&gt;&lt;wnd aaname='文件名:' cls='ComboBox' /&gt;&lt;wnd ctrlid='1001' /&gt;">
+            <ui:Target.TimeoutMS>
+              <InArgument x:TypeArguments="x:Int32" />
+            </ui:Target.TimeoutMS>
+            <ui:Target.WaitForReady>
+              <InArgument x:TypeArguments="ui:WaitForReady" />
+            </ui:Target.WaitForReady>
+          </ui:Target>
+        </ui:TypeInto.Target>
+      </ui:TypeInto>
+      <ui:Click DelayBefore="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DelayMS="2000" DisplayName="Click 'Button'" sap:VirtualizedContainerService.HintSize="454,106" sap2010:WorkflowViewState.IdRef="Click_11" KeyModifiers="None" MouseButton="BTN_LEFT">
+        <ui:Click.CursorPosition>
+          <ui:CursorPosition Position="Center">
+            <ui:CursorPosition.OffsetX>
+              <InArgument x:TypeArguments="x:Int32" />
+            </ui:CursorPosition.OffsetX>
+            <ui:CursorPosition.OffsetY>
+              <InArgument x:TypeArguments="x:Int32" />
+            </ui:CursorPosition.OffsetY>
+          </ui:CursorPosition>
+        </ui:Click.CursorPosition>
+        <ui:Click.Target>
+          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="f82683b65a8725ebb91e077ff63cd0b4" Selector="&lt;wnd app='qad.client.exe' cls='#32770' title='另存为' /&gt;&lt;wnd ctrlid='1' title='保存(&amp;amp;S)' /&gt;">
+            <ui:Target.TimeoutMS>
+              <InArgument x:TypeArguments="x:Int32" />
+            </ui:Target.TimeoutMS>
+            <ui:Target.WaitForReady>
+              <InArgument x:TypeArguments="ui:WaitForReady" />
+            </ui:Target.WaitForReady>
+          </ui:Target>
+        </ui:Click.Target>
+      </ui:Click>
+      <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Button'" sap:VirtualizedContainerService.HintSize="454,106" sap2010:WorkflowViewState.IdRef="Click_12" KeyModifiers="None" MouseButton="BTN_LEFT">
+        <ui:Click.CursorPosition>
+          <ui:CursorPosition Position="Center">
+            <ui:CursorPosition.OffsetX>
+              <InArgument x:TypeArguments="x:Int32" />
+            </ui:CursorPosition.OffsetX>
+            <ui:CursorPosition.OffsetY>
+              <InArgument x:TypeArguments="x:Int32" />
+            </ui:CursorPosition.OffsetY>
+          </ui:CursorPosition>
+        </ui:Click.CursorPosition>
+        <ui:Click.Target>
+          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" InformativeScreenshot="0c557af4ae632c59853b7d087ace995d" Selector="&lt;wnd app='qad.client.exe' cls='#32770' title='下载完毕' /&gt;&lt;wnd ctrlid='2' title='关闭' /&gt;">
+            <ui:Target.TimeoutMS>
+              <InArgument x:TypeArguments="x:Int32" />
+            </ui:Target.TimeoutMS>
+            <ui:Target.WaitForReady>
+              <InArgument x:TypeArguments="ui:WaitForReady" />
+            </ui:Target.WaitForReady>
+          </ui:Target>
+        </ui:Click.Target>
+      </ui:Click>
+    </Sequence>
+  </Sequence>
+</Activity>

@@ -1,0 +1,1191 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="ReadBPMData" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1167,11214" sap2010:WorkflowViewState.IdRef="ReadBPMData_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="24">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="21">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap:VirtualizedContainerService.HintSize="1105,7397" sap2010:WorkflowViewState.IdRef="Sequence_38">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="dicConfig" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Sequence sap:VirtualizedContainerService.HintSize="1063,652" sap2010:WorkflowViewState.IdRef="Sequence_37">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="x:String" Name="workFolder" />
+      </Sequence.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" Timeout="{x:Null}" UnSafe="False" WorkflowFileName="Framework\InitAllSettings.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="x:String" x:Key="in_ConfigFile">Data\Config.xlsx</InArgument>
+          <InArgument x:TypeArguments="s:String[]" x:Key="in_ConfigSheets">[{"Settings","Constants"}]</InArgument>
+          <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_Config">[dicConfig]</OutArgument>
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+      <Assign sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="Assign_28">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[workFolder]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[Path.Combine(dicConfig("SYS_RobotWorkFolder").ToString, dicConfig("SYS_BusinessProcessName").ToString)]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <If Condition="[Directory.Exists(workFolder)]" DisplayName="活动文件夹" sap:VirtualizedContainerService.HintSize="334,53" sap2010:WorkflowViewState.IdRef="If_6">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <If.Else>
+          <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="333.6,85.6" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[workFolder]" />
+        </If.Else>
+      </If>
+      <If Condition="[Directory.Exists( dicConfig(&quot;合计税额文件夹&quot;).ToString)]" DisplayName="合计税额文件夹" sap:VirtualizedContainerService.HintSize="334,53" sap2010:WorkflowViewState.IdRef="If_7">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <If.Else>
+          <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="334,86" sap2010:WorkflowViewState.IdRef="CreateDirectory_2" Path="[dicConfig(&quot;合计税额文件夹&quot;).ToString]" />
+        </If.Else>
+      </If>
+      <If Condition="[Directory.Exists(dicConfig(&quot;差异文件夹&quot;).ToString)]" DisplayName="差异文件夹" sap:VirtualizedContainerService.HintSize="334,53" sap2010:WorkflowViewState.IdRef="If_8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <If.Else>
+          <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="333.6,85.6" sap2010:WorkflowViewState.IdRef="CreateDirectory_3" Path="[dicConfig(&quot;差异文件夹&quot;).ToString]" />
+        </If.Else>
+      </If>
+      <If Condition="[Directory.Exists(dicConfig(&quot;结果文件夹&quot;).ToString)]" DisplayName="结果文件夹" sap:VirtualizedContainerService.HintSize="334,53" sap2010:WorkflowViewState.IdRef="If_10">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <If.Else>
+          <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="334,86" sap2010:WorkflowViewState.IdRef="CreateDirectory_5" Path="[dicConfig(&quot;结果文件夹&quot;).ToString]" />
+        </If.Else>
+      </If>
+    </Sequence>
+    <Sequence DisplayName="合计相同凭证号税额" sap:VirtualizedContainerService.HintSize="1063,6613" sap2010:WorkflowViewState.IdRef="Sequence_1">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="sd:DataTable" Name="dtVATINData" />
+      </Sequence.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Sequence DisplayName="VAT-IN-Report" sap:VirtualizedContainerService.HintSize="1021,2703" sap2010:WorkflowViewState.IdRef="Sequence_3">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="scg:List(x:String)" Name="SheetList" />
+          <Variable x:TypeArguments="ui:WorkbookApplication" Name="isClose" />
+          <Variable x:TypeArguments="x:String" Name="VATINPath" />
+          <Variable x:TypeArguments="sd:DataTable" Name="dtResultVATIN" />
+          <Variable x:TypeArguments="sd:DataTable" Name="dtVATINDataRead" />
+        </Sequence.Variables>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <Assign sap:VirtualizedContainerService.HintSize="618,61" sap2010:WorkflowViewState.IdRef="Assign_1">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[VATINPath]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[path.Combine(dicConfig("QADEE源文件").ToString,"VATINPUT REPORT-EE.xls")]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <ui:ExcelApplicationScope DisplayName="Excel Application Scope" EditPassword="{x:Null}" ExistingWorkbook="{x:Null}" sap:VirtualizedContainerService.HintSize="618,223" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" Password="{x:Null}" Workbook="[isClose]" WorkbookPath="[VATINPath]">
+          <ui:ExcelApplicationScope.Body>
+            <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:ExcelGetWorkbookSheets DisplayName="Get Workbook Sheets" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="ExcelGetWorkbookSheets_1" Sheets="[SheetList]" />
+              </Sequence>
+            </ActivityAction>
+          </ui:ExcelApplicationScope.Body>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:ExcelApplicationScope>
+        <ui:ExcelCloseWorkbook DisplayName="Close Workbook" sap:VirtualizedContainerService.HintSize="618,59" sap2010:WorkflowViewState.IdRef="ExcelCloseWorkbook_1" Workbook="[isClose]">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:ExcelCloseWorkbook>
+        <ui:ReadRange AddHeaders="True" DataTable="[dtVATINDataRead]" DisplayName="读取QADVATIN对账表" sap:VirtualizedContainerService.HintSize="618,87" sap2010:WorkflowViewState.IdRef="ReadRange_2" Password="{x:Null}" Range="A1" SheetName="[SheetList(0)]" WorkbookPath="[VATINPath]" />
+        <ui:ReadRange AddHeaders="True" DataTable="[dtResultVATIN]" DisplayName="读取QADVATIN对账表" sap:VirtualizedContainerService.HintSize="618,87" sap2010:WorkflowViewState.IdRef="ReadRange_3" Password="{x:Null}" Range="A1" SheetName="[SheetList(0)]" WorkbookPath="[VATINPath]" />
+        <Sequence sap:VirtualizedContainerService.HintSize="618,1894" sap2010:WorkflowViewState.IdRef="Sequence_6">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:ClearDataTable DataTable="[dtResultVATIN]" DisplayName="Clear Data Table" sap:VirtualizedContainerService.HintSize="576,22" sap2010:WorkflowViewState.IdRef="ClearDataTable_1" />
+          <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" ColumnName="合计金额" DataTable="[dtResultVATIN]" DefaultValue="{x:Null}" DisplayName="添加合计金额列" sap:VirtualizedContainerService.HintSize="576,22" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_1" MaxLength="{x:Null}" Unique="{x:Null}" />
+          <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="合计金额" DataTable="[dtVATINDataRead]" DisplayName="添加合计金额列" sap:VirtualizedContainerService.HintSize="576,22" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_15" />
+          <ui:FilterDataTable DataTable="[dtVATINDataRead]" DisplayName="Filter Data Table" FilterRowsMode="Remove" sap:VirtualizedContainerService.HintSize="576,59" sap2010:WorkflowViewState.IdRef="FilterDataTable_4" OutputDataTable="[dtVATINData]" SelectColumnsMode="Keep">
+            <ui:FilterDataTable.Filters>
+              <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                <ui:FilterOperationArgument BooleanOperator="And" Operator="EQ">
+                  <ui:FilterOperationArgument.Column>
+                    <InArgument x:TypeArguments="x:String">["VAT Amount"]</InArgument>
+                  </ui:FilterOperationArgument.Column>
+                  <ui:FilterOperationArgument.Operand>
+                    <InArgument x:TypeArguments="x:String">["0"]</InArgument>
+                  </ui:FilterOperationArgument.Operand>
+                </ui:FilterOperationArgument>
+                <ui:FilterOperationArgument BooleanOperator="Or" Operator="EQ">
+                  <ui:FilterOperationArgument.Column>
+                    <InArgument x:TypeArguments="x:String">["VAT Amount"]</InArgument>
+                  </ui:FilterOperationArgument.Column>
+                  <ui:FilterOperationArgument.Operand>
+                    <InArgument x:TypeArguments="x:String">["0.00"]</InArgument>
+                  </ui:FilterOperationArgument.Operand>
+                </ui:FilterOperationArgument>
+              </scg:List>
+            </ui:FilterDataTable.Filters>
+            <ui:FilterDataTable.SelectColumns>
+              <scg:List x:TypeArguments="InArgument" Capacity="4">
+                <x:Null />
+              </scg:List>
+            </ui:FilterDataTable.SelectColumns>
+          </ui:FilterDataTable>
+          <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[dtVATINData]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="576,1362" sap2010:WorkflowViewState.IdRef="ForEachRow_1" Values="{x:Null}">
+            <ui:ForEachRow.Body>
+              <ActivityAction x:TypeArguments="sd:DataRow">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="526,1211" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="x:Decimal" Name="SUMAmount" />
+                    <Variable x:TypeArguments="x:String" Name="test" />
+                    <Variable x:TypeArguments="ui:GenericValue" Name="ReferenceCount" />
+                  </Sequence.Variables>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="484,95" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[row(&quot;GL Reference&quot;).ToString]" />
+                  <Assign sap:VirtualizedContainerService.HintSize="484,61" sap2010:WorkflowViewState.IdRef="Assign_4">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Decimal">[SUMAmount]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Decimal">[dtVATINData.AsEnumerable.where(function(r) r("GL Reference").ToString.Contains(row("GL Reference").ToString)).Sum(function(s) convert.ToDecimal(s("VAT Amount") ))]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="484,95" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[SUMAmount]" />
+                  <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="484,53" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+                    <ui:CommentOut.Body>
+                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="347,162" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Sequence sap:VirtualizedContainerService.HintSize="200,70" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                          <Sequence.Variables>
+                            <Variable x:TypeArguments="ui:GenericValue" Name="str_SINV" />
+                          </Sequence.Variables>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <Assign sap:VirtualizedContainerService.HintSize="263.2,60" sap2010:WorkflowViewState.IdRef="Assign_5">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:String">[test]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="ui:GenericValue">["2022/09 SINV 000003142 8979323"]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <Assign sap:VirtualizedContainerService.HintSize="263.2,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="s:String[]">[testList]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="s:String[]">[test.Split(" ")]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <Assign sap:VirtualizedContainerService.HintSize="263.2,60" sap2010:WorkflowViewState.IdRef="Assign_7">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="ui:GenericValue">[str_SINV]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="ui:GenericValue">[testList(1).ToString+testList(2).ToString]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                        </Sequence>
+                      </Sequence>
+                    </ui:CommentOut.Body>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:CommentOut>
+                  <Assign sap:VirtualizedContainerService.HintSize="484,61" sap2010:WorkflowViewState.IdRef="Assign_8">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="ui:GenericValue">[ReferenceCount]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="ui:GenericValue" xml:space="preserve">[dtResultVATIN.AsEnumerable.Where(function(r)  r("GL Reference").ToString.Contains(row("GL Reference").ToString)).Count]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <If Condition="[ReferenceCount&gt;0]" sap:VirtualizedContainerService.HintSize="484,461" sap2010:WorkflowViewState.IdRef="If_1">
+                    <If.Else>
+                      <Sequence sap:VirtualizedContainerService.HintSize="305,308" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign sap:VirtualizedContainerService.HintSize="263,61" sap2010:WorkflowViewState.IdRef="Assign_37">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Object">[row("合计金额")]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Object">[SUMAmount.ToString]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[row.ItemArray]" DataTable="[dtResultVATIN]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="263,22" sap2010:WorkflowViewState.IdRef="AddDataRow_8" />
+                        <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="263,53" sap2010:WorkflowViewState.IdRef="CommentOut_13">
+                          <ui:CommentOut.Body>
+                            <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_52">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:AddDataRow ArrayRow="[{row(0),row(1),row(2),row(3),row(4),row(5),row(6),row(7),row(8),row(9),row(10),row(11),row(12),row(13),row(14),row(15),(SUMAmount.ToString)}]" DataRow="{x:Null}" DataTable="[dtResultVATIN]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
+                            </Sequence>
+                          </ui:CommentOut.Body>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:CommentOut>
+                      </Sequence>
+                    </If.Else>
+                  </If>
+                  <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="484,53" sap2010:WorkflowViewState.IdRef="CommentOut_3">
+                    <ui:CommentOut.Body>
+                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,249" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:OutputDataTable DataTable="[dtResultVATIN]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="OutputDataTable_1" Text="[test]" />
+                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,95" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[test]" />
+                      </Sequence>
+                    </ui:CommentOut.Body>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:CommentOut>
+                </Sequence>
+              </ActivityAction>
+            </ui:ForEachRow.Body>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:ForEachRow>
+          <ui:WriteRange AddHeaders="True" DataTable="[dtResultVATIN]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="576,115" sap2010:WorkflowViewState.IdRef="WriteRange_1" Password="{x:Null}" SheetName="Sheet1" StartingCell="A1" WorkbookPath="[path.Combine(dicConfig(&quot;合计税额文件夹&quot;).ToString,&quot;VATINReport.xlsx&quot;)]" />
+        </Sequence>
+      </Sequence>
+      <Sequence DisplayName="FIN-07-供应商零星付款-发票清单" sap:VirtualizedContainerService.HintSize="1021,70" sap2010:WorkflowViewState.IdRef="Sequence_26">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="scg:List(x:String)" Name="SheetList" />
+          <Variable x:TypeArguments="sd:DataTable" Name="dtSupplierData" />
+          <Variable x:TypeArguments="sd:DataTable" Name="dtResultSupplier" />
+          <Variable x:TypeArguments="ui:WorkbookApplication" Name="isClose" />
+          <Variable x:TypeArguments="x:String" Name="SupplierPath" />
+          <Variable x:TypeArguments="sd:DataTable" Name="dtSupplierDataRead" />
+        </Sequence.Variables>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <Assign sap:VirtualizedContainerService.HintSize="1021,61" sap2010:WorkflowViewState.IdRef="Assign_15">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[SupplierPath]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[path.Combine(dicConfig("BPM源文件").ToString,"FIN-07-供应商零星付款-发票清单.xls")]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <ui:ExcelApplicationScope DisplayName="Excel Application Scope" EditPassword="{x:Null}" ExistingWorkbook="{x:Null}" sap:VirtualizedContainerService.HintSize="1021,223" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_3" Password="{x:Null}" Workbook="[isClose]" WorkbookPath="[SupplierPath]">
+          <ui:ExcelApplicationScope.Body>
+            <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:ExcelGetWorkbookSheets DisplayName="Get Workbook Sheets" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="ExcelGetWorkbookSheets_3" Sheets="[SheetList]" />
+              </Sequence>
+            </ActivityAction>
+          </ui:ExcelApplicationScope.Body>
+        </ui:ExcelApplicationScope>
+        <ui:ExcelCloseWorkbook DisplayName="Close Workbook" sap:VirtualizedContainerService.HintSize="1021,59" sap2010:WorkflowViewState.IdRef="ExcelCloseWorkbook_3" Workbook="[isClose]" />
+        <ui:ReadRange AddHeaders="True" DataTable="[dtSupplierDataRead]" DisplayName="FIN-07-供应商零星付款-发票清单" sap:VirtualizedContainerService.HintSize="1021,87" sap2010:WorkflowViewState.IdRef="ReadRange_5" Password="{x:Null}" Range="A1" SheetName="[SheetList(0)]" WorkbookPath="[SupplierPath]" />
+        <ui:ReadRange AddHeaders="True" DataTable="[dtResultSupplier]" DisplayName="FIN-07-供应商零星付款-发票清单" sap:VirtualizedContainerService.HintSize="1021,87" sap2010:WorkflowViewState.IdRef="ReadRange_6" Password="{x:Null}" Range="A1" SheetName="[SheetList(0)]" WorkbookPath="[SupplierPath]" />
+        <Sequence sap:VirtualizedContainerService.HintSize="1021,2748" sap2010:WorkflowViewState.IdRef="Sequence_25">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="x:String" Name="ReferenceNo" />
+            <Variable x:TypeArguments="x:String" Name="str_SINV" />
+          </Sequence.Variables>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Sequence sap:VirtualizedContainerService.HintSize="979,362" sap2010:WorkflowViewState.IdRef="Sequence_48">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:ClearDataTable DataTable="[dtResultSupplier]" DisplayName="Clear Data Table" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="ClearDataTable_3" />
+            <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" ColumnName="合计金额" DataTable="[dtResultSupplier]" DefaultValue="{x:Null}" DisplayName="添加“合计金额”列" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_5" MaxLength="{x:Null}" Unique="{x:Null}" />
+            <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" ColumnName="ReferenceNo" DataTable="[dtResultSupplier]" DefaultValue="{x:Null}" DisplayName="凭证号" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_6" MaxLength="{x:Null}" Unique="{x:Null}" />
+            <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="合计金额" DataTable="[dtSupplierDataRead]" DisplayName="添加“合计金额”列" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_9" />
+            <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="ReferenceNo" DataTable="[dtSupplierDataRead]" DisplayName="凭证号" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_10" />
+          </Sequence>
+          <ui:FilterDataTable DataTable="[dtSupplierDataRead]" DisplayName="Filter Data Table" FilterRowsMode="Remove" sap:VirtualizedContainerService.HintSize="979,59" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[dtSupplierData]" SelectColumnsMode="Keep">
+            <ui:FilterDataTable.Filters>
+              <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                <ui:FilterOperationArgument BooleanOperator="And" Operator="EQ">
+                  <ui:FilterOperationArgument.Column>
+                    <InArgument x:TypeArguments="x:String">["税额"]</InArgument>
+                  </ui:FilterOperationArgument.Column>
+                  <ui:FilterOperationArgument.Operand>
+                    <InArgument x:TypeArguments="x:String">["0.00"]</InArgument>
+                  </ui:FilterOperationArgument.Operand>
+                </ui:FilterOperationArgument>
+                <ui:FilterOperationArgument BooleanOperator="Or" Operator="CONTAINS">
+                  <ui:FilterOperationArgument.Column>
+                    <InArgument x:TypeArguments="x:String">["税率"]</InArgument>
+                  </ui:FilterOperationArgument.Column>
+                  <ui:FilterOperationArgument.Operand>
+                    <InArgument x:TypeArguments="x:String">["transportation"]</InArgument>
+                  </ui:FilterOperationArgument.Operand>
+                </ui:FilterOperationArgument>
+              </scg:List>
+            </ui:FilterDataTable.Filters>
+            <ui:FilterDataTable.SelectColumns>
+              <scg:List x:TypeArguments="InArgument" Capacity="4">
+                <x:Null />
+              </scg:List>
+            </ui:FilterDataTable.SelectColumns>
+          </ui:FilterDataTable>
+          <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[dtSupplierData]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="979,2000" sap2010:WorkflowViewState.IdRef="ForEachRow_3" Values="{x:Null}">
+            <ui:ForEachRow.Body>
+              <ActivityAction x:TypeArguments="sd:DataRow">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="929,1849" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="x:Decimal" Name="sumAmount" />
+                    <Variable x:TypeArguments="x:Int32" Name="ReferenceCount" />
+                    <Variable x:TypeArguments="x:Decimal" Name="test" />
+                  </Sequence.Variables>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="887,95" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[row(&quot;凭证号&quot;).ToString]" />
+                  <Assign sap:VirtualizedContainerService.HintSize="887,61" sap2010:WorkflowViewState.IdRef="Assign_17">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Decimal">[sumAmount]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Decimal">[dtSupplierData.AsEnumerable.where(function(r) r("凭证号").ToString.Contains(row("凭证号").ToString) And r("税额").ToString.Trim.Length&gt;0).Sum(function(s) convert.ToDecimal(s("税额").ToString))]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="887,95" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[sumAmount]" />
+                  <Assign DisplayName="判断处理文件是否已存在相同凭证号" sap:VirtualizedContainerService.HintSize="887,61" sap2010:WorkflowViewState.IdRef="Assign_18">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Int32">[ReferenceCount]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Int32">[dtResultSupplier.AsEnumerable.Where(function(r) r("凭证号").ToString.Trim.Equals((row("凭证号").ToString.Trim))).Count]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <If Condition="[ReferenceCount&gt;0]" DisplayName="相同凭证号不再添加入台账" sap:VirtualizedContainerService.HintSize="887,1285" sap2010:WorkflowViewState.IdRef="If_3">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If.Else>
+                      <Sequence sap:VirtualizedContainerService.HintSize="739,1132" sap2010:WorkflowViewState.IdRef="Sequence_23">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Sequence sap:VirtualizedContainerService.HintSize="697,591" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                          <Sequence.Variables>
+                            <Variable x:TypeArguments="s:String[]" Name="referenceList" />
+                          </Sequence.Variables>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <If Condition="[row(&quot;凭证号&quot;).ToString.Trim.Equals(&quot;&quot;)]" sap:VirtualizedContainerService.HintSize="655,499" sap2010:WorkflowViewState.IdRef="If_11">
+                            <If.Then>
+                              <Assign sap:VirtualizedContainerService.HintSize="263,61" sap2010:WorkflowViewState.IdRef="Assign_29">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:String">[str_SINV]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:String">[row("申请编号").ToString.Trim]</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                            </If.Then>
+                            <If.Else>
+                              <Sequence sap:VirtualizedContainerService.HintSize="347,346" sap2010:WorkflowViewState.IdRef="Sequence_40">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <Sequence sap:VirtualizedContainerService.HintSize="305,254" sap2010:WorkflowViewState.IdRef="Sequence_39">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <Assign sap:VirtualizedContainerService.HintSize="263,61" sap2010:WorkflowViewState.IdRef="Assign_19">
+                                    <Assign.To>
+                                      <OutArgument x:TypeArguments="s:String[]">[referenceList]</OutArgument>
+                                    </Assign.To>
+                                    <Assign.Value>
+                                      <InArgument x:TypeArguments="s:String[]">[row("凭证号").ToString.Trim.Split("/"c)]</InArgument>
+                                    </Assign.Value>
+                                  </Assign>
+                                  <Assign sap:VirtualizedContainerService.HintSize="263,61" sap2010:WorkflowViewState.IdRef="Assign_20">
+                                    <Assign.To>
+                                      <OutArgument x:TypeArguments="x:String">[str_SINV]</OutArgument>
+                                    </Assign.To>
+                                    <Assign.Value>
+                                      <InArgument x:TypeArguments="x:String">[referenceList(1).ToString+referenceList(2).ToString]</InArgument>
+                                    </Assign.Value>
+                                  </Assign>
+                                </Sequence>
+                              </Sequence>
+                            </If.Else>
+                          </If>
+                        </Sequence>
+                        <Sequence sap:VirtualizedContainerService.HintSize="697,316" sap2010:WorkflowViewState.IdRef="Sequence_44">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <Assign sap:VirtualizedContainerService.HintSize="263,61" sap2010:WorkflowViewState.IdRef="Assign_31">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:Object">[row("合计金额")]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:Object">[sumAmount.ToString]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <Assign sap:VirtualizedContainerService.HintSize="263,61" sap2010:WorkflowViewState.IdRef="Assign_32">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:Object">[row("ReferenceNo")]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:Object">[str_SINV]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[row.ItemArray]" DataTable="[dtResultSupplier]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="263,22" sap2010:WorkflowViewState.IdRef="AddDataRow_5" />
+                        </Sequence>
+                        <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="697,53" sap2010:WorkflowViewState.IdRef="CommentOut_10">
+                          <ui:CommentOut.Body>
+                            <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_43">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:AddDataRow ArrayRow="[{row(0),row(1),row(2),row(3),row(4),row(5),row(6),row(7),row(8),row(9),row(10),row(11),row(12),row(13),(sumAmount.ToString),str_SINV}]" DataRow="{x:Null}" DataTable="[dtResultSupplier]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddDataRow_3" />
+                            </Sequence>
+                          </ui:CommentOut.Body>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:CommentOut>
+                      </Sequence>
+                    </If.Else>
+                  </If>
+                </Sequence>
+              </ActivityAction>
+            </ui:ForEachRow.Body>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:ForEachRow>
+          <ui:WriteRange AddHeaders="True" DataTable="[dtResultSupplier]" DisplayName="FIN-07-供应商零星付款-发票清单Write Range" sap:VirtualizedContainerService.HintSize="979,115" sap2010:WorkflowViewState.IdRef="WriteRange_3" Password="{x:Null}" SheetName="合计税额" StartingCell="A1" WorkbookPath="[path.Combine(dicConfig(&quot;合计税额文件夹&quot;).ToString,&quot;FIN-07-供应商零星付款-发票清单.xlsx&quot;)]" />
+        </Sequence>
+      </Sequence>
+      <Sequence DisplayName="FIN-14差旅费用报销-QAD" sap:VirtualizedContainerService.HintSize="1021,70" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="x:String" Name="QADPath" />
+          <Variable x:TypeArguments="scg:List(x:String)" Name="SheetList" />
+          <Variable x:TypeArguments="sd:DataTable" Name="dtQADData" />
+          <Variable x:TypeArguments="sd:DataTable" Name="dtResultQAD" />
+          <Variable x:TypeArguments="ui:WorkbookApplication" Name="isClose" />
+          <Variable x:TypeArguments="sd:DataTable" Name="dtQADDataRead" />
+        </Sequence.Variables>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <Assign sap:VirtualizedContainerService.HintSize="1021,61" sap2010:WorkflowViewState.IdRef="Assign_2">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[QADPath]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[path.Combine(dicConfig("BPM源文件").ToString,"FIN14-差旅费用报销-QAD.xls")]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <ui:ExcelApplicationScope DisplayName="Excel Application Scope" EditPassword="{x:Null}" ExistingWorkbook="{x:Null}" sap:VirtualizedContainerService.HintSize="1021,223" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" Password="{x:Null}" Workbook="[isClose]" WorkbookPath="[QADPath]">
+          <ui:ExcelApplicationScope.Body>
+            <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:ExcelGetWorkbookSheets DisplayName="Get Workbook Sheets" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="ExcelGetWorkbookSheets_2" Sheets="[SheetList]" />
+              </Sequence>
+            </ActivityAction>
+          </ui:ExcelApplicationScope.Body>
+        </ui:ExcelApplicationScope>
+        <ui:ExcelCloseWorkbook DisplayName="Close Workbook" sap:VirtualizedContainerService.HintSize="1021,59" sap2010:WorkflowViewState.IdRef="ExcelCloseWorkbook_2" Workbook="[isClose]" />
+        <ui:ReadRange AddHeaders="True" DataTable="[dtQADDataRead]" DisplayName="读取FIN-14差旅费用报销-QAD" sap:VirtualizedContainerService.HintSize="1021,87" sap2010:WorkflowViewState.IdRef="ReadRange_1" Password="{x:Null}" Range="A1" SheetName="[SheetList(0)]" WorkbookPath="[QADPath]" />
+        <ui:ReadRange AddHeaders="True" DataTable="[dtResultQAD]" DisplayName="读取FIN-14差旅费用报销-QAD" sap:VirtualizedContainerService.HintSize="1021,87" sap2010:WorkflowViewState.IdRef="ReadRange_4" Password="{x:Null}" Range="A1" SheetName="[SheetList(0)]" WorkbookPath="[QADPath]" />
+        <Sequence sap:VirtualizedContainerService.HintSize="1021,2841" sap2010:WorkflowViewState.IdRef="Sequence_14">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="x:String" Name="ReferenceNo" />
+            <Variable x:TypeArguments="x:String" Name="str_SINV" />
+          </Sequence.Variables>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Sequence sap:VirtualizedContainerService.HintSize="979,362" sap2010:WorkflowViewState.IdRef="Sequence_49">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:ClearDataTable DataTable="[dtResultQAD]" DisplayName="Clear Data Table" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="ClearDataTable_2" />
+            <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="合计金额" DataTable="[dtResultQAD]" DisplayName="添加“合计金额”列" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_11" />
+            <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" ColumnName="合计金额" DataTable="[dtQADDataRead]" DefaultValue="{x:Null}" DisplayName="添加“合计金额”列" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_3" MaxLength="{x:Null}" Unique="{x:Null}" />
+            <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" ColumnName="ReferenceNo" DataTable="[dtResultQAD]" DefaultValue="{x:Null}" DisplayName="凭证号" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_4" MaxLength="{x:Null}" Unique="{x:Null}" />
+            <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="ReferenceNo" DataTable="[dtQADDataRead]" DisplayName="凭证号" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_12" />
+          </Sequence>
+          <ui:FilterDataTable DataTable="[dtQADDataRead]" DisplayName="Filter Data Table" FilterRowsMode="Remove" sap:VirtualizedContainerService.HintSize="979,59" sap2010:WorkflowViewState.IdRef="FilterDataTable_2" OutputDataTable="[dtQADData]" SelectColumnsMode="Keep">
+            <ui:FilterDataTable.Filters>
+              <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                <ui:FilterOperationArgument BooleanOperator="And" Operator="EQ">
+                  <ui:FilterOperationArgument.Column>
+                    <InArgument x:TypeArguments="x:String">["发票税额"]</InArgument>
+                  </ui:FilterOperationArgument.Column>
+                  <ui:FilterOperationArgument.Operand>
+                    <InArgument x:TypeArguments="x:String">["0.00"]</InArgument>
+                  </ui:FilterOperationArgument.Operand>
+                </ui:FilterOperationArgument>
+                <ui:FilterOperationArgument BooleanOperator="Or" Operator="CONTAINS">
+                  <ui:FilterOperationArgument.Column>
+                    <InArgument x:TypeArguments="x:String">["税率"]</InArgument>
+                  </ui:FilterOperationArgument.Column>
+                  <ui:FilterOperationArgument.Operand>
+                    <InArgument x:TypeArguments="x:String">["transportation"]</InArgument>
+                  </ui:FilterOperationArgument.Operand>
+                </ui:FilterOperationArgument>
+              </scg:List>
+            </ui:FilterDataTable.Filters>
+            <ui:FilterDataTable.SelectColumns>
+              <scg:List x:TypeArguments="InArgument" Capacity="4">
+                <x:Null />
+              </scg:List>
+            </ui:FilterDataTable.SelectColumns>
+          </ui:FilterDataTable>
+          <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[dtQADData]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="979,2093" sap2010:WorkflowViewState.IdRef="ForEachRow_2" Values="{x:Null}">
+            <ui:ForEachRow.Body>
+              <ActivityAction x:TypeArguments="sd:DataRow">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="929,1942" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="x:Decimal" Name="sumAmount" />
+                    <Variable x:TypeArguments="x:Int32" Name="ReferenceCount" />
+                    <Variable x:TypeArguments="x:Decimal" Name="test" />
+                  </Sequence.Variables>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="887,95" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[row(&quot;财务凭证号&quot;).ToString]" />
+                  <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="887,53" sap2010:WorkflowViewState.IdRef="CommentOut_6">
+                    <ui:CommentOut.Body>
+                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="305,153" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign sap:VirtualizedContainerService.HintSize="263,61" sap2010:WorkflowViewState.IdRef="Assign_14">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Decimal">[test]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Decimal">[dtQADData.AsEnumerable.Sum(function(s) convert.ToDecimal(s("发票税额")))]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                      </Sequence>
+                    </ui:CommentOut.Body>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:CommentOut>
+                  <Assign sap:VirtualizedContainerService.HintSize="887,61" sap2010:WorkflowViewState.IdRef="Assign_9">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Decimal">[sumAmount]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Decimal">[dtQADData.AsEnumerable.where(function(r) r("财务凭证号").ToString.Contains(row("财务凭证号").ToString) And r("发票税额").ToString.Trim.Length&gt;0).Sum(function(s) convert.ToDecimal(s("发票税额").ToString))]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="887,95" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[sumAmount]" />
+                  <Assign sap:VirtualizedContainerService.HintSize="887,61" sap2010:WorkflowViewState.IdRef="Assign_12">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Int32">[ReferenceCount]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Int32">[dtResultQAD.AsEnumerable.Where(function(r) r("财务凭证号").ToString.Trim.Equals((row("财务凭证号").ToString.Trim))).Count]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <If Condition="[ReferenceCount&gt;0]" DisplayName="相同凭证号不再添加入台账" sap:VirtualizedContainerService.HintSize="887,1285" sap2010:WorkflowViewState.IdRef="If_2">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If.Else>
+                      <Sequence sap:VirtualizedContainerService.HintSize="739,1132" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Sequence sap:VirtualizedContainerService.HintSize="697,591" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                          <Sequence.Variables>
+                            <Variable x:TypeArguments="s:String[]" Name="referenceList" />
+                          </Sequence.Variables>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <If Condition="[row(&quot;财务凭证号&quot;).ToString.Trim.Equals(&quot;&quot;)]" sap:VirtualizedContainerService.HintSize="655,499" sap2010:WorkflowViewState.IdRef="If_12">
+                            <If.Then>
+                              <Assign sap:VirtualizedContainerService.HintSize="263,61" sap2010:WorkflowViewState.IdRef="Assign_30">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:String">[str_SINV]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:String">[row("申请编号").ToString.Trim]</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                            </If.Then>
+                            <If.Else>
+                              <Sequence sap:VirtualizedContainerService.HintSize="347,346" sap2010:WorkflowViewState.IdRef="Sequence_42">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <Sequence sap:VirtualizedContainerService.HintSize="305,254" sap2010:WorkflowViewState.IdRef="Sequence_41">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <Assign sap:VirtualizedContainerService.HintSize="263,61" sap2010:WorkflowViewState.IdRef="Assign_10">
+                                    <Assign.To>
+                                      <OutArgument x:TypeArguments="s:String[]">[referenceList]</OutArgument>
+                                    </Assign.To>
+                                    <Assign.Value>
+                                      <InArgument x:TypeArguments="s:String[]">[row("财务凭证号").ToString.Trim.Split("/"c)]</InArgument>
+                                    </Assign.Value>
+                                  </Assign>
+                                  <Assign sap:VirtualizedContainerService.HintSize="263,61" sap2010:WorkflowViewState.IdRef="Assign_11">
+                                    <Assign.To>
+                                      <OutArgument x:TypeArguments="x:String">[str_SINV]</OutArgument>
+                                    </Assign.To>
+                                    <Assign.Value>
+                                      <InArgument x:TypeArguments="x:String">[referenceList(1).ToString+referenceList(2).ToString]</InArgument>
+                                    </Assign.Value>
+                                  </Assign>
+                                </Sequence>
+                              </Sequence>
+                            </If.Else>
+                          </If>
+                        </Sequence>
+                        <Sequence sap:VirtualizedContainerService.HintSize="697,316" sap2010:WorkflowViewState.IdRef="Sequence_45">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <Assign sap:VirtualizedContainerService.HintSize="263,61" sap2010:WorkflowViewState.IdRef="Assign_33">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:Object">[row("合计金额")]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:Object">[sumAmount.ToString]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <Assign sap:VirtualizedContainerService.HintSize="263,61" sap2010:WorkflowViewState.IdRef="Assign_34">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:Object">[row("ReferenceNo")]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:Object">[str_SINV]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[row.ItemArray]" DataTable="[dtResultQAD]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="263,22" sap2010:WorkflowViewState.IdRef="AddDataRow_6" />
+                        </Sequence>
+                        <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="697,53" sap2010:WorkflowViewState.IdRef="CommentOut_11">
+                          <ui:CommentOut.Body>
+                            <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_46">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:AddDataRow ArrayRow="[{row(0),row(1),row(2),row(3),row(4),row(5),row(6),row(7),row(8),row(9),row(10),row(11),row(12),row(13),row(14),row(15),row(16),row(17),row(18),row(19),row(20),row(21),row(22),row(23),row(24),row(25),row(26),row(27),row(28),row(29),(sumAmount.ToString),str_SINV}]" DataRow="{x:Null}" DataTable="[dtResultQAD]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddDataRow_2" />
+                            </Sequence>
+                          </ui:CommentOut.Body>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:CommentOut>
+                      </Sequence>
+                    </If.Else>
+                  </If>
+                </Sequence>
+              </ActivityAction>
+            </ui:ForEachRow.Body>
+          </ui:ForEachRow>
+          <ui:WriteRange AddHeaders="True" DataTable="[dtResultQAD]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="979,115" sap2010:WorkflowViewState.IdRef="WriteRange_2" Password="{x:Null}" SheetName="合计税额" StartingCell="A1" WorkbookPath="[path.Combine(dicConfig(&quot;合计税额文件夹&quot;).ToString,&quot;FIN14-差旅费用报销-QAD.xlsx&quot;)]" />
+        </Sequence>
+      </Sequence>
+      <Sequence DisplayName="FIN-15 员工通用费用报销-发票明细" sap:VirtualizedContainerService.HintSize="1021,3558" sap2010:WorkflowViewState.IdRef="Sequence_34">
+        <Sequence.Variables>
+          <Variable x:TypeArguments="scg:List(x:String)" Name="SheetList" />
+          <Variable x:TypeArguments="sd:DataTable" Name="dtWorkerData" />
+          <Variable x:TypeArguments="sd:DataTable" Name="dtResultWorker" />
+          <Variable x:TypeArguments="ui:WorkbookApplication" Name="isClose" />
+          <Variable x:TypeArguments="ui:GenericValue" Name="WorkerPath" />
+          <Variable x:TypeArguments="sd:DataTable" Name="dtWorkerDataRead" />
+        </Sequence.Variables>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <Assign sap:VirtualizedContainerService.HintSize="979,61" sap2010:WorkflowViewState.IdRef="Assign_21">
+          <Assign.To>
+            <OutArgument x:TypeArguments="ui:GenericValue">[WorkerPath]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="ui:GenericValue">[path.Combine(dicConfig("BPM源文件").ToString,"FIN-15 员工通用费用报销-发票明细.xls")]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <ui:ExcelApplicationScope DisplayName="Excel Application Scope" EditPassword="{x:Null}" ExistingWorkbook="{x:Null}" sap:VirtualizedContainerService.HintSize="979,223" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_4" Password="{x:Null}" Workbook="[isClose]" WorkbookPath="[WorkerPath]">
+          <ui:ExcelApplicationScope.Body>
+            <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_28">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:ExcelGetWorkbookSheets DisplayName="Get Workbook Sheets" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="ExcelGetWorkbookSheets_4" Sheets="[SheetList]" />
+              </Sequence>
+            </ActivityAction>
+          </ui:ExcelApplicationScope.Body>
+        </ui:ExcelApplicationScope>
+        <ui:ExcelCloseWorkbook DisplayName="Close Workbook" sap:VirtualizedContainerService.HintSize="979,59" sap2010:WorkflowViewState.IdRef="ExcelCloseWorkbook_4" Workbook="[isClose]" />
+        <ui:ReadRange AddHeaders="True" DataTable="[dtWorkerDataRead]" DisplayName="FIN-15 员工通用费用报销-发票明细" sap:VirtualizedContainerService.HintSize="979,87" sap2010:WorkflowViewState.IdRef="ReadRange_7" Password="{x:Null}" Range="A1" SheetName="[SheetList(0)]" WorkbookPath="[WorkerPath]" />
+        <ui:ReadRange AddHeaders="True" DataTable="[dtResultWorker]" DisplayName="FIN-15 员工通用费用报销-发票明细" sap:VirtualizedContainerService.HintSize="979,87" sap2010:WorkflowViewState.IdRef="ReadRange_8" Password="{x:Null}" Range="A1" SheetName="[SheetList(0)]" WorkbookPath="[WorkerPath]" />
+        <Sequence sap:VirtualizedContainerService.HintSize="979,2749" sap2010:WorkflowViewState.IdRef="Sequence_33">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="x:String" Name="ReferenceNo" />
+            <Variable x:TypeArguments="x:String" Name="str_SINV" />
+          </Sequence.Variables>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Sequence sap:VirtualizedContainerService.HintSize="937,362" sap2010:WorkflowViewState.IdRef="Sequence_50">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:ClearDataTable DataTable="[dtResultWorker]" DisplayName="Clear Data Table" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="ClearDataTable_4" />
+            <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" ColumnName="合计金额" DataTable="[dtResultWorker]" DefaultValue="{x:Null}" DisplayName="添加“合计金额”列" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_7" MaxLength="{x:Null}" Unique="{x:Null}" />
+            <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" ColumnName="ReferenceNo" DataTable="[dtResultWorker]" DefaultValue="{x:Null}" DisplayName="凭证号" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_8" MaxLength="{x:Null}" Unique="{x:Null}" />
+            <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="合计金额" DataTable="[dtWorkerDataRead]" DisplayName="添加“合计金额”列" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_13" />
+            <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="ReferenceNo" DataTable="[dtWorkerDataRead]" DisplayName="凭证号" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_14" />
+          </Sequence>
+          <ui:FilterDataTable DataTable="[dtWorkerDataRead]" DisplayName="Filter Data Table" FilterRowsMode="Remove" sap:VirtualizedContainerService.HintSize="937,59" sap2010:WorkflowViewState.IdRef="FilterDataTable_3" OutputDataTable="[dtWorkerData]" SelectColumnsMode="Keep">
+            <ui:FilterDataTable.Filters>
+              <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                <ui:FilterOperationArgument BooleanOperator="And" Operator="EQ">
+                  <ui:FilterOperationArgument.Column>
+                    <InArgument x:TypeArguments="x:String">["税额"]</InArgument>
+                  </ui:FilterOperationArgument.Column>
+                  <ui:FilterOperationArgument.Operand>
+                    <InArgument x:TypeArguments="x:String">["0.00"]</InArgument>
+                  </ui:FilterOperationArgument.Operand>
+                </ui:FilterOperationArgument>
+                <ui:FilterOperationArgument BooleanOperator="Or" Operator="CONTAINS">
+                  <ui:FilterOperationArgument.Column>
+                    <InArgument x:TypeArguments="x:String">["税率（选择）"]</InArgument>
+                  </ui:FilterOperationArgument.Column>
+                  <ui:FilterOperationArgument.Operand>
+                    <InArgument x:TypeArguments="x:String">["transportation"]</InArgument>
+                  </ui:FilterOperationArgument.Operand>
+                </ui:FilterOperationArgument>
+              </scg:List>
+            </ui:FilterDataTable.Filters>
+            <ui:FilterDataTable.SelectColumns>
+              <scg:List x:TypeArguments="InArgument" Capacity="4">
+                <x:Null />
+              </scg:List>
+            </ui:FilterDataTable.SelectColumns>
+          </ui:FilterDataTable>
+          <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[dtWorkerData]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="937,2001" sap2010:WorkflowViewState.IdRef="ForEachRow_4" Values="{x:Null}">
+            <ui:ForEachRow.Body>
+              <ActivityAction x:TypeArguments="sd:DataRow">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="887,1850" sap2010:WorkflowViewState.IdRef="Sequence_32">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="x:Decimal" Name="sumAmount" />
+                    <Variable x:TypeArguments="x:Int32" Name="ReferenceCount" />
+                    <Variable x:TypeArguments="x:Decimal" Name="test" />
+                  </Sequence.Variables>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="845,95" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Info" Message="[row(&quot;凭证号&quot;).ToString]" />
+                  <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="845,53" sap2010:WorkflowViewState.IdRef="CommentOut_9">
+                    <ui:CommentOut.Body>
+                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="305,153" sap2010:WorkflowViewState.IdRef="Sequence_29">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign sap:VirtualizedContainerService.HintSize="263,61" sap2010:WorkflowViewState.IdRef="Assign_22">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Decimal">[test]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Decimal">[dtWorkerData.AsEnumerable.Sum(function(s) convert.ToDecimal(s("发票税额")))]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                      </Sequence>
+                    </ui:CommentOut.Body>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:CommentOut>
+                  <Assign sap:VirtualizedContainerService.HintSize="845,61" sap2010:WorkflowViewState.IdRef="Assign_23">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Decimal">[sumAmount]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Decimal">[dtWorkerData.AsEnumerable.where(function(r) r("凭证号").ToString.Contains(row("凭证号").ToString) And r("发票总金额（原币）").ToString.Trim.Length&gt;0).Sum(function(s) convert.ToDecimal(s("发票总金额（原币）").ToString))]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="845,95" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Info" Message="[sumAmount]" />
+                  <Assign DisplayName="判断处理文件是否已存在相同凭证号" sap:VirtualizedContainerService.HintSize="845,61" sap2010:WorkflowViewState.IdRef="Assign_24">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Int32">[ReferenceCount]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Int32">[dtResultWorker.AsEnumerable.Where(function(r) r("凭证号").ToString.Trim.Equals((row("凭证号").ToString.Trim))).Count]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <If Condition="[ReferenceCount&gt;0]" DisplayName="相同凭证号不再添加入台账" sap:VirtualizedContainerService.HintSize="845,1193" sap2010:WorkflowViewState.IdRef="If_4">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If.Else>
+                      <Sequence sap:VirtualizedContainerService.HintSize="697,1040" sap2010:WorkflowViewState.IdRef="Sequence_31">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Sequence sap:VirtualizedContainerService.HintSize="655,499" sap2010:WorkflowViewState.IdRef="Sequence_30">
+                          <Sequence.Variables>
+                            <Variable x:TypeArguments="s:String[]" Name="referenceList" />
+                          </Sequence.Variables>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <If Condition="[row(&quot;凭证号&quot;).ToString.Trim.Length&gt;0]" sap:VirtualizedContainerService.HintSize="613,407" sap2010:WorkflowViewState.IdRef="If_5">
+                            <If.Then>
+                              <Sequence sap:VirtualizedContainerService.HintSize="305,254" sap2010:WorkflowViewState.IdRef="Sequence_36">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <Assign sap:VirtualizedContainerService.HintSize="263,61" sap2010:WorkflowViewState.IdRef="Assign_25">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="s:String[]">[referenceList]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="s:String[]">[row("凭证号").ToString.Trim.Split("/"c)]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                                <Assign sap:VirtualizedContainerService.HintSize="263,61" sap2010:WorkflowViewState.IdRef="Assign_26">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:String">[str_SINV]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:String">[referenceList(1).ToString+referenceList(2).ToString]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                              </Sequence>
+                            </If.Then>
+                            <If.Else>
+                              <Assign sap:VirtualizedContainerService.HintSize="263,61" sap2010:WorkflowViewState.IdRef="Assign_27">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:String">[str_SINV]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:String">[row("申请编号").ToString.Trim]</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                            </If.Else>
+                          </If>
+                        </Sequence>
+                        <Sequence sap:VirtualizedContainerService.HintSize="655,316" sap2010:WorkflowViewState.IdRef="Sequence_47">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <Assign sap:VirtualizedContainerService.HintSize="263,61" sap2010:WorkflowViewState.IdRef="Assign_35">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:Object">[row("合计金额")]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:Object">[sumAmount.ToString]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <Assign sap:VirtualizedContainerService.HintSize="263,61" sap2010:WorkflowViewState.IdRef="Assign_36">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:Object">[row("ReferenceNo")]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:Object">[str_SINV]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[row.ItemArray]" DataTable="[dtResultWorker]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="263,22" sap2010:WorkflowViewState.IdRef="AddDataRow_7" />
+                        </Sequence>
+                        <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="655,53" sap2010:WorkflowViewState.IdRef="CommentOut_12">
+                          <ui:CommentOut.Body>
+                            <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_51">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:AddDataRow ArrayRow="[{row(0),row(1),row(2),row(3),row(4),row(5),row(6),row(7),row(8),row(9),row(10),row(11),row(12),(sumAmount.ToString),str_SINV}]" DataRow="{x:Null}" DataTable="[dtResultWorker]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddDataRow_4" />
+                            </Sequence>
+                          </ui:CommentOut.Body>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:CommentOut>
+                      </Sequence>
+                    </If.Else>
+                  </If>
+                </Sequence>
+              </ActivityAction>
+            </ui:ForEachRow.Body>
+          </ui:ForEachRow>
+          <ui:WriteRange AddHeaders="True" DataTable="[dtResultWorker]" DisplayName="FIN-15 员工通用费用报销-发票明细" sap:VirtualizedContainerService.HintSize="937,115" sap2010:WorkflowViewState.IdRef="WriteRange_4" Password="{x:Null}" SheetName="合计税额" StartingCell="A1" WorkbookPath="[path.Combine(dicConfig(&quot;合计税额文件夹&quot;).ToString,&quot;FIN-15 员工通用费用报销-发票明细.xlsx&quot;)]" />
+        </Sequence>
+      </Sequence>
+    </Sequence>
+  </Sequence>
+</Activity>
